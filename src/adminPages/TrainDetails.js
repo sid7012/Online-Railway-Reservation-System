@@ -2,9 +2,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import { toast } from 'react-toastify'
-
-const trainDetails = () => {
+const TrainDetails = () => {
 
     const [trains, setTrains] = useState([])
     console.log(sessionStorage.id)
@@ -23,18 +21,18 @@ const trainDetails = () => {
 
     return (
         < div className="container" >
-        <table class="table table-danger" style={{marginTop:'10px'}}>
-            <thead >
-                <tr>
-              
-                    <th scope="col">id</th>
-                    <th scope="col">Train Name</th>
-                    <th scope="col">Start city</th>
-                    <th scope="col">Dest city</th>
-                    <th scope="col">Departure Time</th>
-                    <th scope="col">Reach Time</th>
-                    <th scope="col">Total Seat Count</th>
-                </tr>
+            <table class="table table-danger" style={{ marginTop: '10px' }}>
+                <thead >
+                    <tr>
+
+                        <th scope="col">id</th>
+                        <th scope="col">Train Name</th>
+                        <th scope="col">Start city</th>
+                        <th scope="col">Dest city</th>
+                        <th scope="col">Departure Time</th>
+                        <th scope="col">Reach Time</th>
+                        <th scope="col">Total Seat Count</th>
+                    </tr>
                 </thead>
                 <tbody>
                     {trains.map((t) => {
@@ -53,14 +51,11 @@ const trainDetails = () => {
                     }
 
                 </tbody>
-             </table>
+            </table>
 
-         </div>
-
-       
-
+        </div>
 
     );
 }
 
-export default trainDetails
+export default TrainDetails
