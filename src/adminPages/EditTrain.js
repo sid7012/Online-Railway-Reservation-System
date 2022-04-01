@@ -1,7 +1,10 @@
 import React from 'react'
 
-const EditTrain = () => {
+const EditTrain = (props) => {
+
+    console.log(props.id)
     return (
+        
         <div>EditTrain</div>
     )
 }

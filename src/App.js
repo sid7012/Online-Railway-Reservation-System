@@ -8,6 +8,8 @@ import Header from './components/header'
 import { ToastContainer } from 'react-toastify';
 import ForgetPassword from './adminPages/forgetPassword'
 import SearchingTrain from './adminPages/searchingTrain'
+import Home from './adminPages/Home'
+import EditTrain from './adminPages/EditTrain' 
 
 function App() {
   return (
@@ -16,12 +18,15 @@ function App() {
       <BrowserRouter>
    
       <Routes>
+
+        <Route path="/" element={<Home/>} />
         <Route path="/signin" element={<Signin/>} />
         <Route path="/signup" element={<Signup/>} />
         <Route path="/addTrain" element={<AddTrain/>} />
         <Route path="/trainDetails" element={<TrainDetails/>} />
         <Route path="/forgetPassword" element={<ForgetPassword/>} />
         <Route path="/searchingTrain" element={<SearchingTrain/>} />
+        <Route path="/editTrain" element={<EditTrain/>} />
       </Routes>
       </BrowserRouter>
   <ToastContainer theme="colored"/>

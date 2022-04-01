@@ -1,9 +1,10 @@
 import './Signup.css'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { URL } from '../../src/config'
+import { useNavigate } from 'react-router'
 
 const Signup = () => {
 
@@ -16,7 +17,7 @@ const Signup = () => {
     const [gender, setGender] = useState('')
     const [age, setAge] = useState('')
 
-
+    const navigate = useNavigate()
 
     const signupUser = () => {
         if (firstName.length === 0) {
@@ -57,14 +58,18 @@ const Signup = () => {
 
                 const result = response.data
 
-                if (result['status'] === 'success')
+                if (result['status'] === 'success') {
                     toast.success('You are signed up successfully')
+                    navigate("/signin")
+                }
                 else {
                     toast.warning(result['error'])
                 }
             })
         }
+
     }
+
 
 
     return (
@@ -72,7 +77,7 @@ const Signup = () => {
             <h1> Sign Up Here </h1>
             <div className="row">
                 <div className="col">
-                    <div classname="form">
+                    <div className="form">
                         <label htmlFor="" className="label-control">First name :</label>
                         <input onChange={(e) => {
                             setFirstName(e.target.value)
@@ -89,7 +94,7 @@ const Signup = () => {
 
             <div className="row">
                 <div className="col">
-                    <div classname="form">
+                    <div className="form">
                         <label htmlFor="" className="label-control">Email Id :</label>
                         <input onChange={(e) => {
 
@@ -108,7 +113,7 @@ const Signup = () => {
 
             <div className="row">
                 <div className="col">
-                    <div classname="form">
+                    <div className="form">
                         <label htmlFor="" className="label-control">Age :</label>
                         <input onChange={(e) => {
                             setAge(e.target.value)
@@ -125,7 +130,7 @@ const Signup = () => {
 
             <div className="row">
                 <div className="col">
-                    <div classname="form">
+                    <div className="form">
                         <label htmlFor="" className="label-control">Gender :</label>
                         <input onChange={(e) => {
                             setGender(e.target.value)
@@ -144,15 +149,11 @@ const Signup = () => {
             <div className="mb-3">
                 <div> Already have an account? <Link to="/signin"> Signin here</Link>
                 </div>
-                <button onClick={signupUser} className="btn-secondary">Submit</button>
-                <button onClick={signupUser} className="btn-danger">Reset</button>
+                <button onClick={signupUser} style={{ margin: "10px" }} className="btn-secondary">Submit</button>
+                <button  style={{ margin: "10px" }} className="btn-danger float-end">Reset</button>
 
             </div>
         </div>
-
-
-
-
 
     );
 }

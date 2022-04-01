@@ -2,12 +2,19 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { URL } from '../../src/config'
+import { Link} from 'react-router-dom'
+
+import { useLocation } from 'react-router'
+
 
 const TrainDetails = () => {
 
     const [trains, setTrains] = useState([])
     console.log(sessionStorage.id)
     console.log(sessionStorage.firstName)
+
+
+    console.log(useLocation())
     useEffect(
         () => {
 
@@ -25,10 +32,12 @@ const TrainDetails = () => {
             border: 'solid'
         }
     }
+
+
     return (
         < div className="container" >
             <h2 style={{ textAlign: "center" }}>Train Details</h2>
-            <table class="table " style={styles.table}>
+            <table className="table " style={styles.table}>
                 <thead >
                     <tr>
 
@@ -55,10 +64,10 @@ const TrainDetails = () => {
                                 <td>{t.reachTime}</td>
                                 <td>{t.totalSeatCount}</td>
                                 <td>
-                                    <button type="button" class="btn btn-success">Edit</button>
+                                    <button type="button" className="btn btn-success"><Link to="/editTrain">Edit</Link></button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-danger">Delete</button>
+                                    <button type="button" className="btn btn-danger">Delete</button>
                                 </td>
                             </tr>
                         )
@@ -72,7 +81,7 @@ const TrainDetails = () => {
                     <div className="col"></div>
                     <div className="col"></div>
                     <div className="col">
-                        <button type="button" class="btn btn-primary">Add Train</button>
+                        <button type="button" className="btn btn-primary">Add Train</button>
                     </div>
                     <div className="col"></div>
                     <div className="col"></div>
