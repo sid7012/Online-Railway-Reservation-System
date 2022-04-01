@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { URL } from '../../src/config'
 
 const TrainDetails = () => {
 
@@ -10,18 +11,24 @@ const TrainDetails = () => {
     useEffect(
         () => {
 
-            const URL = "http://localhost:8080/trains/"
+            const url = `${URL}/trains/`
             console.log("Inside get all trains")
-            axios.get(URL).then((response) => {
+            axios.get(url).then((response) => {
                 const result = response.data
                 setTrains(result.data)
             })
         }, []);
 
-
+    const styles = {
+        table: {
+            marginTop: '10px',
+            border: 'solid'
+        }
+    }
     return (
         < div className="container" >
-            <table class="table table-danger" style={{ marginTop: '10px' }}>
+            <h2 style={{ textAlign: "center" }}>Train Details</h2>
+            <table class="table " style={styles.table}>
                 <thead >
                     <tr>
 
@@ -32,6 +39,8 @@ const TrainDetails = () => {
                         <th scope="col">Departure Time</th>
                         <th scope="col">Reach Time</th>
                         <th scope="col">Total Seat Count</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,6 +54,12 @@ const TrainDetails = () => {
                                 <td>{t.departureTime}</td>
                                 <td>{t.reachTime}</td>
                                 <td>{t.totalSeatCount}</td>
+                                <td>
+                                    <button type="button" class="btn btn-success">Edit</button>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger">Delete</button>
+                                </td>
                             </tr>
                         )
                     })
@@ -52,6 +67,18 @@ const TrainDetails = () => {
 
                 </tbody>
             </table>
+            <div className="container">
+                <div className="row">
+                    <div className="col"></div>
+                    <div className="col"></div>
+                    <div className="col">
+                        <button type="button" class="btn btn-primary">Add Train</button>
+                    </div>
+                    <div className="col"></div>
+                    <div className="col"></div>
+                </div>
+            </div>
+
 
         </div>
 

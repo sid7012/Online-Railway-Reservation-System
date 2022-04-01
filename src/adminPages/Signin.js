@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router'
+import { URL } from '../../src/config'
 
 const Signin = () => {
 
@@ -26,7 +27,7 @@ const Signin = () => {
             }
 
             console.log(body)
-            const url = "http://localhost:8080/users/findByEmail"
+            const url = `${URL}/users/findByEmail`
 
             axios.post(url, body).then(response => {
                 const result = response.data
