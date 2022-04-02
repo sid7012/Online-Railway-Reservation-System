@@ -122,7 +122,7 @@ const ForgetPassword = () => {
                 </div>
                 <div className='col'></div>
                 <div className='col'>
-                  <button onClick={resetPassword} className="btn-danger">
+                  <button onClick={cancelReset} className="btn-danger">
                     Cancel
                   </button>
                 </div>

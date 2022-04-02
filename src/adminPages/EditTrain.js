@@ -3,8 +3,11 @@ import { useLocation } from 'react-router-dom'
 import axios from "axios"
 import { toast } from "react-toastify"
 import { URL } from '../../src/config'
+import { useNavigate } from 'react-router'
 
 const EditTrain = () => {
+
+    const navigate = useNavigate()
 
     const [trainName, setTrainName] = useState('')
     const [startCity, setSourseCity] = useState('')
@@ -81,6 +84,7 @@ const EditTrain = () => {
             if (result['status'] == 'success') {
                 toast.success('Train edited suceessfully..!!')
                 console.log("Sam",result.data)
+                navigate("/trainDetails")
             }
             else
                 toast.error(result['error'])
@@ -89,7 +93,7 @@ const EditTrain = () => {
 
     const bhushan = ()=>
     {
-        console.log("Sam..!!")
+        navigate("/trainDetails")
     }
     return (
         <div className="container">
@@ -120,7 +124,7 @@ const EditTrain = () => {
                     </div>
                     <div className="col">
                         <div className="label-control">Departure Time :</div>
-                        <input value={departureTime} onChange={(e) => {
+                        <input placeholder={departureTime} onChange={(e) => {
                             setDepartureTime(e.target.value)
                         }} type="time" className="form-control" pattern="[0-9]{2}" />
                     </div>
@@ -129,13 +133,13 @@ const EditTrain = () => {
                 <div className="row">
                     <div className="col">
                         <div className="label-control">Reach Time :</div>
-                        <input value={reachTime} onChange={(e) => {
+                        <input placeholder={reachTime} onChange={(e) => {
                             setReachTime(e.target.value)
                         }} type="time" className="form-control" />
                     </div>
                     <div className="col">
                         <div className="label-control">AC Seat Price(Sitting) :</div>
-                        <input value={acSeatingSeatPrice} onChange={(e) => {
+                        <input placeholder={acSeatingSeatPrice} onChange={(e) => {
                             setACSeatPriceSitting(e.target.value)
                         }} type="number" className="form-control" />
                     </div>
@@ -144,13 +148,13 @@ const EditTrain = () => {
                 <div className="row">
                     <div className="col">
                         <div className="label-control">AC Seat Price(Sleeping) :</div>
-                        <input value={acSleeperSeatPrice} onChange={(e) => {
+                        <input placeholder={acSleeperSeatPrice} onChange={(e) => {
                             setACSeatPriceSleeping(e.target.value)
                         }} type="number" className="form-control" />
                     </div>
                     <div className="col">
                         <div className="label-control">Non-AC Seat Price(Sitting) :</div>
-                        <input value={nonAcSeatingSeatPrice} onChange={(e) => {
+                        <input placeholder={nonAcSeatingSeatPrice} onChange={(e) => {
                             setNonACSeatPriceSitting(e.target.value)
                         }} type="number" className="form-control" />
                     </div>
@@ -159,7 +163,7 @@ const EditTrain = () => {
                 <div className="row">
                     <div className="col">
                         <div className="label-control">Non-AC Seat Price(Sleeping) :</div>
-                        <input value={nonAcSleeperSeatPrice} onChange={(e) => {
+                        <input placeholder={nonAcSleeperSeatPrice} onChange={(e) => {
                             setNonACSeatPriceSleeping(e.target.value)
                         }} type="number" className="form-control" />
                     </div>

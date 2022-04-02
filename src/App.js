@@ -10,6 +10,7 @@ import ForgetPassword from './adminPages/forgetPassword'
 import SearchingTrain from './adminPages/searchingTrain'
 import Home from './adminPages/Home'
 import EditTrain from './adminPages/EditTrain' 
+import AddAdmin from './adminPages/AddAdmin'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/forgetPassword" element={<ForgetPassword/>} />
         <Route path="/searchingTrain" element={<SearchingTrain/>} />
         <Route path="/editTrain" element={<EditTrain/>} />
+        <Route path="/addAdmin" element={<AddAdmin/>} />
       </Routes>
       </BrowserRouter>
   <ToastContainer theme="colored"/>

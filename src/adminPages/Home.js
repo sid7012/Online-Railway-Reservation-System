@@ -13,7 +13,7 @@ const Home = () => {
                     <Link to="/trainDetails"><h1>trainDetails</h1></Link>
                     <Link to="/forgetPassword"><h1>forgetPassword</h1></Link>
                     <Link to="/searchingTrain"><h1>searchingTrain</h1></Link>
-                    <Link to="/editTrain"><h1>editTrain</h1></Link>
+                    
                 </div>
                 <div className="col"></div>
             </div>

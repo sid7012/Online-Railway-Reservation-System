@@ -6,7 +6,7 @@ import axios from 'axios';
 import { URL } from '../../src/config'
 import { useNavigate } from 'react-router'
 
-const Signup = () => {
+const AddAdmin = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -46,7 +46,7 @@ const Signup = () => {
                 gender,
                 mobile,
                 address,
-                role: 'user'
+                role: 'admin'
             }
 
             console.log(body)
@@ -70,10 +70,9 @@ const Signup = () => {
 
     }
 
-    const cancel=()=>{
-        navigate("/signin")
-    }
-
+        const cancel=()=>{
+            navigate("/trainDetails")
+        }
 
     return (
         <div className="container">
@@ -139,7 +138,6 @@ const Signup = () => {
                             setGender(e.target.value)
                         }} type="text" className="form-control" />
                     </div>
-
                 </div>
                 <div className="col">
                     <label htmlFor="" className="label-control">Address :</label>
@@ -151,16 +149,14 @@ const Signup = () => {
 
 
             <div className="mb-3">
-                <div> Already have an account? <Link to="/signin"> Signin here</Link>
-                </div>
+               
                 <button onClick={signupUser} style={{ margin: "10px" }} className="btn-secondary">Submit</button>
                 <button  onClick={cancel} style={{ margin: "10px" }} className="btn-danger float-end">Cancel</button>
 
             </div>
-           
         </div>
 
     );
 }
 
-export default Signup
+export default AddAdmin
