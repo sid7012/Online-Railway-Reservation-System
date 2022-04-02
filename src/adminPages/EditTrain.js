@@ -1,10 +1,14 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom'
 
-const EditTrain = (props) => {
+const EditTrain = () => {
 
-    console.log(props.id)
+    const { state } = useLocation()
+    console.log(useLocation())
+    console.log(state)
+    console.log(state.id)
     return (
-        
+
         <div>EditTrain</div>
     )
 }
