@@ -47,57 +47,60 @@ const Signin = () => {
   };
 
   return (
-    <div className="container">
-      <h1>Signin Here</h1>
+    <div className='background-img example'>
 
-      <div className="row">
-        <div className="col"></div>
-        <div className="col">
-          <div className="form">
-            <div className="shadow p-3 mb-5 bg-body rounded">
-              <label htmlFor="" className="label-control">
-                Email Id :
-              </label>
-              <input
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-                type="text"
-                className="form-control"
-              />
-            </div>
+      <div className="container">
+        <h1>Signin Here</h1>
 
-            <div className="shadow p-3 mb-5 bg-body rounded">
-              <label htmlFor="" className="label-contor">
-                Password :
-              </label>
-              <input
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-                type="password"
-                className="form-control"
-              />
-            </div>
-
-            <div className="mb-3">
-              <div>
-                Don't have an account ? <Link to="/signup"> Signup here</Link>
+        <div className="row">
+          <div className="col"></div>
+          <div className="col">
+            <div className="form">
+              <div className="shadow p-3 mb-5 bg-body rounded">
+                <label htmlFor="" className="label-control">
+                  Email Id :
+                </label>
+                <input
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                  type="text"
+                  className="form-control"
+                />
               </div>
-              <div>
-                Forgot Password ? <Link to="/forgetPassword"> Click here to reset your password</Link>
+
+              <div className="shadow p-3 mb-5 bg-body rounded">
+                <label htmlFor="" className="label-contor">
+                  Password :
+                </label>
+                <input
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  type="password"
+                  className="form-control"
+                />
               </div>
-              <button
-                onClick={signinUser}
-                className="btn-primary"
-                style={{ borderRadius: "7px", marginTop: "10px" }}
-              >
-                Submit
-              </button>
+
+              <div className="mb-3">
+                <div>
+                  Don't have an account ? <Link to="/signup"> Signup here</Link>
+                </div>
+                <div>
+                  Forgot Password ? <Link to="/forgetPassword"> Click here to reset your password</Link>
+                </div>
+                <button
+                  onClick={signinUser}
+                  className="btn-primary"
+                  style={{ borderRadius: "7px", marginTop: "10px" }}
+                >
+                  Submit
+                </button>
+              </div>
             </div>
           </div>
+          <div className="col"></div>
         </div>
-        <div className="col"></div>
       </div>
     </div>
   );

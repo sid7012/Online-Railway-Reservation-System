@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import { URL } from '../config'
+import { useNavigate } from 'react-router-dom';
 
 
 const SearchingTrain = () => {
@@ -15,6 +16,7 @@ const SearchingTrain = () => {
     const [to, setTo] = useState([]);
     const [destCity, setDestCity] = useState('');
 
+    const navigate = useNavigate();
     useEffect(() => {
         const url = `${URL}/trains/from`
         axios.get(url).then(response => {
@@ -63,9 +65,11 @@ const SearchingTrain = () => {
             console.log(result.data)
             console.log("list of trains called")
             if (result['status'] === 'success') {
+                navigate("/singleTrainDetails", { state: { data: result.data } })
                 setTo(result['data'])
             } else
                 toast.error(result['error'])
+
         })
     }
     return (

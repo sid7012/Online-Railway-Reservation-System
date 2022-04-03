@@ -2,11 +2,11 @@ import { useState } from "react"
 import axios from "axios"
 import { toast } from "react-toastify"
 import { URL } from '../config'
-import {useNavigate} from 'react-router'
+import { useNavigate } from 'react-router'
 
 const AddTrain = () => {
 
-  const navigate=useNavigate()
+  const navigate = useNavigate()
 
   const [trainName, setTrainName] = useState('')
   const [startCity, setSourseCity] = useState('')
@@ -42,57 +42,53 @@ const AddTrain = () => {
       totalSeatCount
 
     }
-
-
     const url = `${URL}/trains/`
-    if(trainName==0)
+    if (trainName == 0)
       toast.error('Name is Empty')
-        else if (startCity==0)
-        toast.error('Source City is Empty')
-          else if (destCity==0)
-          toast.error('Destination City is Empty')
-            else if (departureTime==0)
-            toast.error('Departure Time is Empty')
-              else if (reachTime==0)
-              toast.error('Reach Time is Empty')
-                else if (acSeatingSeatCount==0)
-                toast.error('AC Seating Seat Count is Empty')
-                  else if (acSleeperSeatCount==0)
-                  toast.error('Ac Sleeper Seat Count is Empty')
-                    else if (nonAcSeatingSeatCount==0)
-                    toast.error('non AC Seating Seat Count is Empty')
-                    else if (nonAcSleeperSeatCount==0)
-                    toast.error('non AC Sleeper Seat Count is Empty')
-                    else if (acSeatingSeatPrice==0)
-                    toast.error('AC Seating Seat Price is Empty')
-                      else if (acSleeperSeatPrice==0)
-                      toast.error('AC Sleeper Seat Price is Empty')
-                        else if (nonAcSeatingSeatPrice==0)
-                        toast.error('non AC Seating Seat Price is Empty')
-                          else if (nonAcSleeperSeatPrice==0)
-                          toast.error('non AC Sleeper Seat Price is Empty')
-                          else if (totalSeatCount==0)
-                          toast.error('Total Seat Count is Empty')
-                         
-                          
-                          else{
-                            axios.post(url, body).then((response) => {
+    else if (startCity == 0)
+      toast.error('Source City is Empty')
+    else if (destCity == 0)
+      toast.error('Destination City is Empty')
+    else if (departureTime == 0)
+      toast.error('Departure Time is Empty')
+    else if (reachTime == 0)
+      toast.error('Reach Time is Empty')
+    else if (acSeatingSeatCount == 0)
+      toast.error('AC Seating Seat Count is Empty')
+    else if (acSleeperSeatCount == 0)
+      toast.error('Ac Sleeper Seat Count is Empty')
+    else if (nonAcSeatingSeatCount == 0)
+      toast.error('non AC Seating Seat Count is Empty')
+    else if (nonAcSleeperSeatCount == 0)
+      toast.error('non AC Sleeper Seat Count is Empty')
+    else if (acSeatingSeatPrice == 0)
+      toast.error('AC Seating Seat Price is Empty')
+    else if (acSleeperSeatPrice == 0)
+      toast.error('AC Sleeper Seat Price is Empty')
+    else if (nonAcSeatingSeatPrice == 0)
+      toast.error('non AC Seating Seat Price is Empty')
+    else if (nonAcSleeperSeatPrice == 0)
+      toast.error('non AC Sleeper Seat Price is Empty')
+    else if (totalSeatCount == 0)
+      toast.error('Total Seat Count is Empty')
 
-                              const result = response.data
-                        
-                              if (result['status'] == 'success'){
-                                toast.success('Train added Successfully')
-                                navigate("/trainDetails")
-                              }
-                              else
-                                toast.error(result['error'])
-                            })
-                            console.log(body)
-                          }
-                          }
-   
 
-  const cancel=()=>{
+    else {
+      axios.post(url, body).then((response) => {
+
+        const result = response.data
+
+        if (result['status'] == 'success') {
+          toast.success('Train added Successfully')
+          navigate("/trainDetails")
+        }
+        else
+          toast.error(result['error'])
+      })
+      console.log(body)
+    }
+  }
+  const cancel = () => {
     navigate("/trainDetails")
   }
 
@@ -211,9 +207,9 @@ const AddTrain = () => {
           </div>
         </div>
         <div>
-          <button style={{ marginTop: "10px" }}  onClick={ addTrain } className="btn-primary" >Add Train</button>
+          <button style={{ marginTop: "10px" }} onClick={addTrain} className="btn-primary" >Add Train</button>
 
-          <button style={{ marginTop: "10px" }}  onClick={ cancel } className="btn-danger float-end">Cancel</button>
+          <button style={{ marginTop: "10px" }} onClick={cancel} className="btn-danger float-end">Cancel</button>
         </div>
       </div>
     </div>
