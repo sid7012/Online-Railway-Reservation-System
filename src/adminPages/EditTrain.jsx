@@ -102,7 +102,7 @@ const EditTrain = () => {
                 <div className="row">
                     <div className="col">
                         <div className="label-control">Train Name :</div>
-                        <input placeholder={trainName} onChange={(e) => {
+                        <input value={trainName} onChange={(e) => {
                             setTrainName(e.target.value)
                         }} type="text" className="form-control" />
                     </div>
@@ -124,7 +124,7 @@ const EditTrain = () => {
                     </div>
                     <div className="col">
                         <div className="label-control">Departure Time :</div>
-                        <input placeholder={departureTime} onChange={(e) => {
+                        <input value={departureTime} onChange={(e) => {
                             setDepartureTime(e.target.value)
                         }} type="time" className="form-control" pattern="[0-9]{2}" />
                     </div>
@@ -133,13 +133,13 @@ const EditTrain = () => {
                 <div className="row">
                     <div className="col">
                         <div className="label-control">Reach Time :</div>
-                        <input placeholder={reachTime} onChange={(e) => {
+                        <input value={reachTime} onChange={(e) => {
                             setReachTime(e.target.value)
                         }} type="time" className="form-control" />
                     </div>
                     <div className="col">
                         <div className="label-control">AC Seat Price(Sitting) :</div>
-                        <input placeholder={acSeatingSeatPrice} onChange={(e) => {
+                        <input value={acSeatingSeatPrice} onChange={(e) => {
                             setACSeatPriceSitting(e.target.value)
                         }} type="number" className="form-control" />
                     </div>
@@ -148,13 +148,13 @@ const EditTrain = () => {
                 <div className="row">
                     <div className="col">
                         <div className="label-control">AC Seat Price(Sleeping) :</div>
-                        <input placeholder={acSleeperSeatPrice} onChange={(e) => {
+                        <input value={acSleeperSeatPrice} onChange={(e) => {
                             setACSeatPriceSleeping(e.target.value)
                         }} type="number" className="form-control" />
                     </div>
                     <div className="col">
                         <div className="label-control">Non-AC Seat Price(Sitting) :</div>
-                        <input placeholder={nonAcSeatingSeatPrice} onChange={(e) => {
+                        <input value={nonAcSeatingSeatPrice} onChange={(e) => {
                             setNonACSeatPriceSitting(e.target.value)
                         }} type="number" className="form-control" />
                     </div>
@@ -163,7 +163,7 @@ const EditTrain = () => {
                 <div className="row">
                     <div className="col">
                         <div className="label-control">Non-AC Seat Price(Sleeping) :</div>
-                        <input placeholder={nonAcSleeperSeatPrice} onChange={(e) => {
+                        <input value={nonAcSleeperSeatPrice} onChange={(e) => {
                             setNonACSeatPriceSleeping(e.target.value)
                         }} type="number" className="form-control" />
                     </div>

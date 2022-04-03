@@ -41,8 +41,9 @@ const SingleTrainDetails = () => {
         })
     }
     return (
-        <div>BookingPage
-            <table className="table table-hover">
+        <div style={{marginTop:"20px"}} className='container'>
+            <h1>Train Details</h1>
+            <table style={{ border: "solid" }} className="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Train Id</th>

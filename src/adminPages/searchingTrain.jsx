@@ -1,10 +1,9 @@
 
 import './searchingTrain.css'
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
 import { URL } from '../config'
 import { useNavigate } from 'react-router-dom';
 
@@ -74,14 +73,15 @@ const SearchingTrain = () => {
     }
     return (
 
-        <div className="container">
+        <div style={{marginTop:"50px"}} className="container">
             <div className="form">
                 <div className="row">
                     <div className="col"></div>
                     <div className="col">
-                        <div className="label-control">startCity :</div>
+                        <div style={{fontSize:"30px"}} className="label-control">Start City :</div>
                         <label type="text" className="form-control">
                             <select type="text" className="form-control" value={startCity} onChange={handleChange}>
+                                <option style={{textAlign:"center"}}>--Select Start City--</option>
                                 {from.map((f) => (
                                     <option value={f}>{f}</option>
                                 ))}
@@ -92,14 +92,15 @@ const SearchingTrain = () => {
 
                         <button onClick={getfrom}
                             className="btn-primary"
-                            style={{ borderRadius: "7px", marginTop: "35px", width: "100%" }}>get
+                            style={{ borderRadius: "7px", marginTop: "50px", width: "100%", height:"40px" }}>get
                         </button>
 
                     </div>
                     <div className="col">
-                        <div className="label-control">destCity :</div>
+                        <div style={{fontSize:"30px"}} className="label-control">Destination City :</div>
                         <label type="text" className="form-control">
                             <select type="text" className="form-control" value={destCity} onChange={sam}>
+                                <option style={{textAlign:"center"}}>--Select Dest City--</option>
                                 {to.map((f) => (
                                     <option value={f}>{f}</option>
                                 ))}
@@ -116,7 +117,7 @@ const SearchingTrain = () => {
                 <div className="col">
                     <button onClick={search}
                         className="btn-danger"
-                        style={{ borderRadius: "7px", marginTop: "35px", width: "100%", height: "40px" }}>
+                        style={{ borderRadius: "7px", marginTop: "50px", width: "100%", height: "40px" }}>
                         Search
                     </button>
                 </div>
