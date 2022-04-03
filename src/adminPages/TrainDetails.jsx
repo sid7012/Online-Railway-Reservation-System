@@ -1,20 +1,15 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { URL } from "../../src/config";
+import { URL } from "../config";
 import Train from "../components/Train";
 import { useNavigate } from "react-router";
-import { useLocation } from 'react-router-dom'
-import { toast } from "react-toastify"
+
 
 const TrainDetails = () => {
   const navigate = useNavigate();
   const [trains, setTrains] = useState([]);
-  console.log(sessionStorage.id);
-  console.log(sessionStorage.firstName);
-
-
-
-    
+  // console.log(sessionStorage.id);
+  // console.log(sessionStorage.firstName);
 
   useEffect(() => {
     const url = `${URL}/trains/`;
@@ -22,8 +17,6 @@ const TrainDetails = () => {
     axios.get(url).then((response) => {
       const result = response.data;
       setTrains(result.data);
-
-    
 
     });
   }, []);
@@ -40,42 +33,41 @@ const TrainDetails = () => {
       <div className="container">
         <div className="row">
           <div className="col">
-          <button
+            <button
               onClick={() => {
                 navigate("/addTrain");
               }}
               type="button"
-              className="btn btn-primary"
-            >
+              className="btn btn-primary">
               Add New Train
             </button>
           </div>
           <div className="col"></div>
           <div className="col">
-            
+
           </div>
 
           <div className="col">
-           
+
           </div>
 
           <div className="col"></div>
           <div className="col"> <button
-              onClick={() => {
-                navigate("/addAdmin");
-              }}
-              type="button"
-              className="btn btn-primary"
-            >
-              Add New Admin
-            </button></div>
+            onClick={() => {
+              navigate("/addAdmin");
+            }}
+            type="button"
+            className="btn btn-primary"
+          >
+            Add New Admin
+          </button></div>
         </div>
       </div>
 
       <h2 style={{ textAlign: "center" }}>Train Details</h2>
 
       {trains.map((t) => {
-        return <Train sam={t} />;
+        return <Train key={t.id} sam={t} />;
       })}
     </div>
   );

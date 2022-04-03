@@ -3,7 +3,7 @@ import { Link, Navigate } from 'react-router-dom'
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import { URL } from '../../src/config'
+import { URL } from '../config'
 import { useNavigate } from 'react-router'
 
 const Signup = () => {

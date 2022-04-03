@@ -1,7 +1,7 @@
 import { useState } from "react"
 import axios from "axios"
 import { toast } from "react-toastify"
-import { URL } from '../../src/config'
+import { URL } from '../config'
 import {useNavigate} from 'react-router'
 
 const AddTrain = () => {

@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 import React, { Component } from 'react';
 import axios from 'axios'
 import { useNavigate } from 'react-router'
-import { URL } from '../../src/config'
+import { URL } from '../config'
 
 
 const ForgetPassword = () => {

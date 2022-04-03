@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
-import { URL } from "../../src/config";
+import { URL } from "../config";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
