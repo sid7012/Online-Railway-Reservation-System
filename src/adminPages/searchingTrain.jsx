@@ -18,7 +18,8 @@ const SearchingTrain = () => {
     const navigate = useNavigate();
     useEffect(() => {
         const url = `${URL}/trains/from`
-        axios.get(url).then(response => {
+        axios.get(url).then(response => 
+            {
             const result = response.data
             console.log(result.data)
             if (result['status'] === 'success') {
@@ -89,7 +90,6 @@ const SearchingTrain = () => {
                         </label>
                     </div>
                     <div className="col">
-
                         <button onClick={getfrom}
                             className="btn-primary"
                             style={{ borderRadius: "7px", marginTop: "50px", width: "100%", height:"40px" }}>get

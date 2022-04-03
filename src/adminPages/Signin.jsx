@@ -33,6 +33,7 @@ const Signin = () => {
 
           sessionStorage["id"] = result.data.id;
           sessionStorage["firstName"] = result.data.firstName;
+          sessionStorage["loginStatus"] = 1;
 
           // console.log(sessionStorage.id)
           // console.log(sessionStorage.firstName)
@@ -40,7 +41,7 @@ const Signin = () => {
           toast.error(result["error"]);
         }
 
-        if (result.data.role === "admin") navigate("/trainDetails");
+        (result.data.role === "admin")? navigate("/trainDetails"):navigate("/searchingTrain")
         console.log(result);
       });
     }

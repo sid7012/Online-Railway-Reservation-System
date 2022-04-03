@@ -109,12 +109,9 @@ const AddTrain = () => {
             <div className="label-control">Source City :</div>
             <input onChange={(e) => {
               setSourseCity(e.target.value)
-
             }} type="text" className="form-control" />
           </div>
         </div>
-
-
 
         <div className="row">
           <div className="col">

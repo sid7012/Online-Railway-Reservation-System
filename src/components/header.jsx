@@ -1,7 +1,19 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 // import { a } from "react-router-dom";
 
 const Header = () => {
+
+
+  const logoutUser = () => {
+    // remove the logged users details from session storage
+    sessionStorage.removeItem('id');
+    sessionStorage.removeItem('firstName');
+    sessionStorage.removeItem('loginStatus');
+
+
+
+  }
   return (
 
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -9,7 +21,7 @@ const Header = () => {
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link" href="/" >
+              <a className="nav-link" href="/home" >
                 Home
               </a>
             </li>
@@ -30,9 +42,9 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <div style={{marginBottom:"2px", fontSize:"20px"}} className="nav-item">
+        <div style={{ marginBottom: "2px", fontSize: "20px" }} className="nav-item">
           <li className="nav-item">
-            <a  className="nav-link" href="/signin">
+            <a className="nav-link" href="/signin" onClick={logoutUser}>
               Logout
             </a>
           </li>
