@@ -1,26 +1,103 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import axios from "axios";
+import { URL } from '../config';
+import Swal from 'sweetalert2';
 
 const Payment = () => {
 
-    const navigate = useNavigate();
+    const { state } = useLocation();
+    console.log(state)
+    console.log(state.trainData)
+    console.log(state.arrayOfPassenger[0].firstName)
+    console.log(state.arrayOfPassenger[0])
 
-    // const trainDetails = state.trainData
-    // console.log(trainDetails.dataofTrain.trainName)
+    const navigate = useNavigate();
+    //variables used to assign states came from last page
+    const trainDetails = state.trainData
+    const array = state.arrayOfPassenger
+
+    console.log(trainDetails.dataofTrain.trainName)
 
     const [cardNumber, setCardNumber] = useState('');
     const [date, setDate] = useState('');
     const [cvv, setCvv] = useState('');
     const [name, setName] = useState('');
 
-    const styles = {
-        sam: {
-            marginBottom: "10px"
-        }
-    }
 
+    // const [userId, setUserId] = useState(0)
+    // const [trainId, setTrainId] = useState(0)
+    // const [ticketId, settTicketId] = useState(0)
+
+    //ids assigned from session storage & states
+    const userId = sessionStorage.id
+    const trainId = trainDetails.dataofTrain.id
+    const dateOfTravelling = trainDetails.dateOfTrav
+    let arrayToBackend = []
+
+    // const sam = { ...state.arrayOfPassenger[0], s: "sam" }
+    // console.log(sam)
+
+    // setTrainId(state.trainData.dataofTrain.id)
+    // setUserId(sessionStorage.id);
+
+    // const s = parseInt(trainDetails.dataofTrain.nonAcSleeperSeatPrice)
+    // const b = s + 20
+    console.log(b)
+
+    //this method is called in make payment method
+    const helper = () => {
+        const body = {
+            //values are assigned to the elements from states which came fromlast page
+            noOfPassanger: array.length,
+            startCity: trainDetails.dataofTrain.startCity,
+            destCity: trainDetails.dataofTrain.destCity,
+            departureTime: trainDetails.dataofTrain.departureTime,
+            reachTime: trainDetails.dataofTrain.reachTime,
+            ticketAmount: 500,
+            status: "Booked"
+        }
+        //this axios call will put the entry in ticket table
+        const url = `${URL}/tickets/`
+        axios.post(url, body).then(response => {
+            const result = response.data
+            console.log(result.data)
+            if (result['status'] === 'success') {
+                console.log("Ticket added")
+                toast.success("Ticket confirmed..!!")
+                //ticket id is generated from above method & used next axios call of passenger add 
+                let ticketId = result.data.id
+                console.log(ticketId)
+                //for getting ticket id 
+                //we applied for loop bcoz it is array oo diffrent object came from state
+                let sam = {};
+                for (let i = 0; i < state.arrayOfPassenger.length; i++) {
+                    //this is called as object spreading
+                    sam = { ...state.arrayOfPassenger[0], userId, trainId, ticketId, dateOfTravelling }
+                    arrayToBackend.push(sam)
+                }
+                //checked that array of objects is produced or not
+                console.log("ala re", arrayToBackend)
+                
+                //this axios call will put the entry of passengers in passenger table
+                const url2 = `${URL}/users/addPassengerList`
+                axios.post(url2, arrayToBackend).then(response => {
+                    const result = response.data
+                    console.log("passList: ", result.data)
+                    if (result['status'] === 'success') {
+                        toast.success("Passenger added...!!")
+                    } else {
+                        toast.error(result['error'])
+                    }
+                })
+            } else
+                toast.error(result['error'])
+        })
+    }
+    //this method is calling above helper method
     const makePayment = () => {
+
         if (cardNumber.length == 0)
             toast.warning("Please enter the card number..!!");
         else if (date.length == 0)
@@ -30,10 +107,30 @@ const Payment = () => {
         else if (name.length == 0)
             toast.warning("Please enter the card name..!!");
         else {
-            toast.success("Payment done ..!!");
-            navigate("/");
+            //sweet alert is used to ask permissions or give confirmations
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Confirm it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    helper()
+                    Swal.fire(
+                        'Booked!',
+                        'Your Ticket has been Confirmed...!!',
+                        'success'
+                    )
+                }
+            })
         }
+
     }
+
+
 
     return (
         <div className="container" style={{ font: "50px", color: "black", fontFamily: "inherit" }} >
@@ -88,7 +185,7 @@ const Payment = () => {
                         </div>
                         <br>
                         </br>
-                        <div style={{marginBottom:"50px"}} className='row'>
+                        <div style={{ marginBottom: "45px" }} className='row'>
                             <button
                                 onClick={makePayment}
                                 className="btn btn-success"

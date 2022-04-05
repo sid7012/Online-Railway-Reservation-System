@@ -27,6 +27,12 @@ const AddPassenger = () => {
             toast.error("FirstName cannot be empty")
         else if (lastName.length === 0)
             toast.error("LastName cannot be empty")
+        else if (gender.length === 0)
+            toast.error("gender cannot be empty")
+        else if (seatClassName.length === 0)
+            toast.error("seatClassName cannot be empty")
+        else if (innerType.length === 0)
+            toast.error("Select Seating/Sleeper cannot be empty")
         else {
             const obj = { firstName, lastName, age, gender, seatClassName, innerType }
             arrayOfPassenger.push(obj)
@@ -38,9 +44,9 @@ const AddPassenger = () => {
             // navigate("/addPassenger")
             setFirstName('')
             setLastName('')
-            setGender('')
-            setSeatClassName('')
-            setInnerType('')
+            // setGender('')
+            // setSeatClassName('')
+            // setInnerType('')
 
         }
     }
@@ -153,7 +159,7 @@ const AddPassenger = () => {
                 <div className="col">
                     <button onClick={bookTicket}
                         className="btn-primary"
-                        style={{ borderRadius: "7px", marginTop: "25px", width: "500px", height: "40px",  marginBottom:"100px" }}>
+                        style={{ borderRadius: "7px", marginTop: "25px", width: "500px", height: "40px", marginBottom: "100px" }}>
                         Book Ticket
                     </button>
                 </div>

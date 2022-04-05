@@ -17,13 +17,18 @@ import AddPassenger from './Customer_pages/AddPassenger'
 import Payment from './Customer_pages/Payment'
 import AddSchedule from './adminPages/AddSchedule'
 import Links from './Customer_pages/Links'
+import AboutUS from './adminPages/AboutUS'
+import ContactUs from './adminPages/ContactUs'
+import TermAndCondition from './adminPages/TermAndCondition'
+import PrivacyPolicy from './adminPages/PrivacyPolicy'
+import FAQSScreen from './adminPages/FAQSScreen'
 
 function App() {
   const AuthorizeUser = () => {
     const loginStatus = sessionStorage['loginStatus']
     return loginStatus !== '1' ? <Home /> : <SearchingTrain />
   }
-  
+
   return (
     <div className='container-fluid'>
       <Header />
@@ -46,6 +51,11 @@ function App() {
           <Route path="/addSchedule" element={<AddSchedule />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/addAdmin" element={<AddAdmin />} />
+          <Route path="/aboutus" element={<AboutUS />} />
+          <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/termsnconditions" element={<TermAndCondition />} />
+          <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+          <Route path="/faqs" element={<FAQSScreen />} />
         </Routes>
       </BrowserRouter>
       <Footer />

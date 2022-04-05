@@ -15,12 +15,12 @@ export default class Footer extends Component {
 
     render() {
         return (
-            <div style={{ backgroundColor: "black", marginBottom:"0px" }}>
+            <div style={{ backgroundColor: "black", marginBottom: "0px" }}>
                 <div className="row">
                     <div className="col">
                         <table style={{ marginLeft: "16px" }}>
                             <tr>
-                                <td><a href="/aboutus" className="nav-link">
+                                <td><a to="/aboutus" className="nav-link">
                                     <h6 className="nameColor">About Us</h6>
                                 </a>
                                 </td>
@@ -55,7 +55,7 @@ export default class Footer extends Component {
                         </table>
                     </div>
 
-                    <div style={{color:"white", marginTop:"30px"}} className="col">
+                    <div style={{ color: "white", marginTop: "30px" }} className="col">
                         <div className="float-end">
                             <div className="nameColor">
                                 <h4>Download App</h4>
