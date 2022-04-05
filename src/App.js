@@ -4,6 +4,7 @@ import Signin from './adminPages/Signin'
 import Signup from './adminPages/Signup'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Header from './components/Header'
+import Footer from './components/Footer'
 import { ToastContainer } from 'react-toastify';
 import ForgetPassword from './adminPages/forgetPassword'
 import SearchingTrain from './adminPages/searchingTrain'
@@ -15,20 +16,21 @@ import TrainSchedule from './Customer_pages/TrainSchedule'
 import AddPassenger from './Customer_pages/AddPassenger'
 import Payment from './Customer_pages/Payment'
 import AddSchedule from './adminPages/AddSchedule'
-
+import Links from './Customer_pages/Links'
 
 function App() {
   const AuthorizeUser = () => {
     const loginStatus = sessionStorage['loginStatus']
-    return loginStatus == '1' ? <Home /> : <Signin />
- 
+    return loginStatus !== '1' ? <Home /> : <SearchingTrain />
   }
+  
   return (
     <div className='container-fluid'>
-      <Header/>
+      <Header />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<AuthorizeUser />} />
+          <Route path="/links" element={<Links />} />
           <Route path="/home" element={<Home />} />
           <Route path="/header" element={<Header />} />
           <Route path="/signin" element={<Signin />} />
@@ -46,6 +48,7 @@ function App() {
           <Route path="/addAdmin" element={<AddAdmin />} />
         </Routes>
       </BrowserRouter>
+      <Footer />
       <ToastContainer theme="colored" />
     </div>
   );

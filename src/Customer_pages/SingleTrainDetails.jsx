@@ -18,16 +18,12 @@ const SingleTrainDetails = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-
         const url = `${URL}/trains/selectDate/${trainId}`
         axios.get(url).then(response => {
             const result = response.data
-            console.log(result.data)
             console.log("date of travellings")
-            setArrayOfDates(result.data)
             if (result['status'] === 'success') {
                 setArrayOfDates(result.data)
-                console.log("sam")
                 console.log(result.data)
             } else {
                 toast.error(result['error'])
@@ -49,16 +45,17 @@ const SingleTrainDetails = () => {
 
     return (
         <div style={{ marginTop: "20px" }} className='container'>
-           <TrainTableComponent sam={trainData}/>
+            <TrainTableComponent sam={trainData} />
             <div className="label-control">Available Date of travelling</div>
-            <label type="date" className="form-control">
+            {arrayOfDates.length != 0 ? <label type="date" className="form-control">
                 <select type="date" className="form-control" onChange={handleChange}>
-                    <option style={{ textAlign: "center" }}>--Select Date of Travelling--</option>
+                    <option style={{ textAlign: "center"}}>--Select Date of Travelling--</option>
                     {arrayOfDates.map((f) => (
                         <option value={f}>{f}</option>
                     ))}
                 </select>
             </label>
+                : <h3 style={{textAlign:"center", color:"red"}}>Dates are not available</h3> }
             <div className="row">
                 <div className="col"></div>
                 <div className="col">

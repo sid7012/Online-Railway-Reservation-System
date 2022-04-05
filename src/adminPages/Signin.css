@@ -11,10 +11,10 @@ h1 {
  */
 }
 .background-img {
-  background-image: url("../../public/image/train.jpg");
+  background-image: url("https://images.unsplash.com/photo-1541427468627-a89a96e5ca1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80");
   background-size: cover;
   background-position: center center;
-  background-attachment: fixed;
+  /* background-attachment: fixed; */
   background-repeat: no-repeat;
   height: 625px;
   width: 100%;

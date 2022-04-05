@@ -153,7 +153,7 @@ const AddPassenger = () => {
                 <div className="col">
                     <button onClick={bookTicket}
                         className="btn-primary"
-                        style={{ borderRadius: "7px", marginTop: "25px", width: "500px", height: "40px" }}>
+                        style={{ borderRadius: "7px", marginTop: "25px", width: "500px", height: "40px",  marginBottom:"100px" }}>
                         Book Ticket
                     </button>
                 </div>

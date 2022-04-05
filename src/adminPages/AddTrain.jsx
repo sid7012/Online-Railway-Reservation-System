@@ -77,7 +77,7 @@ const AddTrain = () => {
 
         const result = response.data
 
-        if (result['status'] == 'success') {
+        if (result['status'] === 'success') {
           toast.success('Train added Successfully')
           navigate("/trainDetails")
         }

@@ -119,7 +119,7 @@ const SearchingTrain = () => {
                 <div className="col">
                     <button onClick={search}
                         className="btn-danger"
-                        style={{ borderRadius: "7px", marginTop: "50px", width: "100%", height: "40px" }}>
+                        style={{ borderRadius: "7px", marginTop: "50px", width: "100%", height: "40px", marginBottom:"250px" }}>
                         Search
                     </button>
                 </div>

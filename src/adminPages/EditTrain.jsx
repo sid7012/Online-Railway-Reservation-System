@@ -32,7 +32,7 @@ const EditTrain = () => {
         const url = `${URL}/trains/${id}`
         axios.get(url).then((response) => {
             const result = response.data
-            if (result['status'] == 'success') {
+            if (result['status'] === 'success') {
                 // toast.success('Got the details of train...!!')
                 console.log(result.data)
                 const setData = result.data
@@ -81,9 +81,9 @@ const EditTrain = () => {
         const url = `${URL}/trains/${id}`
         axios.put(url, body).then((response) => {
             const result = response.data
-            if (result['status'] == 'success') {
+            if (result['status'] === 'success') {
                 toast.success('Train edited suceessfully..!!')
-                console.log("Sam",result.data)
+                console.log("Sam", result.data)
                 navigate("/trainDetails")
             }
             else
@@ -91,8 +91,7 @@ const EditTrain = () => {
         })
     }
 
-    const bhushan = ()=>
-    {
+    const bhushan = () => {
         navigate("/trainDetails")
     }
     return (
