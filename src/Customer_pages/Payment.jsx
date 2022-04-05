@@ -44,7 +44,7 @@ const Payment = () => {
 
     // const s = parseInt(trainDetails.dataofTrain.nonAcSleeperSeatPrice)
     // const b = s + 20
-    console.log(b)
+    // console.log(b)
 
     //this method is called in make payment method
     const helper = () => {
