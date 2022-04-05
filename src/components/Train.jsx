@@ -46,6 +46,7 @@ const Train = (props) => {
                         <th scope="col">Total Seat Count</th>
                         <th scope="col">Edit</th>
                         <th scope="col">Delete</th>
+                        <th scope="col">AddSchedule</th>
                     </tr>
                 </thead>
 
@@ -66,6 +67,11 @@ const Train = (props) => {
                         <td>
                             <button onClick={deleteTrain}
                                 type="button" className="btn btn-danger">Delete</button>
+                        </td>
+                        <td>
+                            <button onClick={() => {
+                                navigate("/addSchedule", { state: { id: props.sam.id, trainData: props.sam } })
+                            }}type="button" className="btn btn-primary">Schedule Train</button>
                         </td>
                     </tr>
                 </tbody>

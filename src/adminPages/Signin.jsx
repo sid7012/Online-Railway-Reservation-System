@@ -1,6 +1,6 @@
-import { Link, Navigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import "./Signin.css";
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import axios from "axios";
@@ -41,7 +41,7 @@ const Signin = () => {
           toast.error(result["error"]);
         }
 
-        (result.data.role === "admin")? navigate("/trainDetails"):navigate("/searchingTrain")
+        (result.data.role === "admin") ? navigate("/trainDetails") : navigate("/searchingTrain")
         console.log(result);
       });
     }
@@ -49,15 +49,20 @@ const Signin = () => {
 
   return (
     <div className='background-img example'>
+      <br>
+      </br>
 
-      <div className="container">
-        <h1>Signin Here</h1>
+      <div className="container" style={{font:"50px", color: "black", fontFamily:"inherit" }} >
+        <h1>Login</h1>
+        <br>
 
-        <div className="row">
+        </br>
+
+        <div className="row" style={{ color: "white" }}>
           <div className="col"></div>
           <div className="col">
             <div className="form">
-              <div className="shadow p-3 mb-5 bg-body rounded">
+              <div>
                 <label htmlFor="" className="label-control">
                   Email Id :
                 </label>
@@ -69,8 +74,10 @@ const Signin = () => {
                   className="form-control"
                 />
               </div>
+              <br>
+              </br>
 
-              <div className="shadow p-3 mb-5 bg-body rounded">
+              <div>
                 <label htmlFor="" className="label-contor">
                   Password :
                 </label>
@@ -82,19 +89,20 @@ const Signin = () => {
                   className="form-control"
                 />
               </div>
-
+              <br>
+              </br>
               <div className="mb-3">
-                <div>
+                <div style={{ color: "white" }}>
                   Don't have an account ? <Link to="/signup"> Signup here</Link>
                 </div>
-                <div>
+                <div style={{ color: "white" }}>
                   Forgot Password ? <Link to="/forgetPassword"> Click here to reset your password</Link>
                 </div>
+                <br></br>
                 <button
                   onClick={signinUser}
-                  className="btn-primary"
-                  style={{ borderRadius: "7px", marginTop: "10px" }}
-                >
+                  className="btn btn-primary"
+                  style={{ borderRadius: "7px", marginTop: "10px", }}>
                   Submit
                 </button>
               </div>

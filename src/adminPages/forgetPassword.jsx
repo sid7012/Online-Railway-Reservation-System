@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import './forgetPassword.css'
 import { toast } from 'react-toastify'
-import React, { Component } from 'react';
+import React from 'react';
 import axios from 'axios'
 import { useNavigate } from 'react-router'
 import { URL } from '../config'
-
+import './forgetPassword.css'
 
 const ForgetPassword = () => {
 
@@ -21,17 +21,17 @@ const ForgetPassword = () => {
   }
 
   const resetPassword = () => {
-    if (email.length == 0) {
+    if (email.length === 0) {
       toast.warning('please enter email')
     }
 
-    else if (password.length == 0) {
+    else if (password.length === 0) {
       toast.warning("Please enter password");
     }
-    else if (confirmPassword.length == 0) {
+    else if (confirmPassword.length === 0) {
       toast.warning("Please confirm your password");
     }
-    else if (password != confirmPassword) {
+    else if (password !== confirmPassword) {
       toast.warning("Password does not match");
     }
     else {
@@ -48,7 +48,7 @@ const ForgetPassword = () => {
         // get the server result
         const result = response.data
         console.log(result)
-        if (result['status'] == 'success') {
+        if (result['status'] === 'success') {
           toast.success('Password updated')
 
           // navigate to login 
@@ -66,7 +66,7 @@ const ForgetPassword = () => {
     <div className='background-img example'>
       <h1 className="title">Forgot Password</h1>
 
-      <div className="row ">
+      <div style={{color:"white"}} className="row ">
         <div className="col"></div>
 
         <div className="col border1">
@@ -83,8 +83,6 @@ const ForgetPassword = () => {
                 className="form-control"
               />
             </div>
-
-
 
             <div className="mb-3">
               <label htmlFor="" className="label-control">
@@ -116,13 +114,13 @@ const ForgetPassword = () => {
 
               <div className='row'>
                 <div className='col'>
-                  <button onClick={resetPassword} className="btn-primary" style={{ borderRadius: "7px" }}>
+                  <button onClick={resetPassword} className="btn btn-primary" >
                     Reset Password
                   </button>
                 </div>
                 <div className='col'></div>
                 <div className='col'>
-                  <button onClick={cancelReset} className="btn-danger">
+                  <button style={{width:"150px"}}  onClick={cancelReset} className="btn btn-danger">
                     Cancel
                   </button>
                 </div>

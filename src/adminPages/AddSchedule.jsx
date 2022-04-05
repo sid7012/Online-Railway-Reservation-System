@@ -1,56 +1,49 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useLocation } from 'react-router'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { URL } from '../config'
 
-const SingleTrainDetails = () => {
+const AddSchedule = () => {
     const { state } = useLocation()
-    const trainData = state.data
-    console.log(state.data.id)
 
-    const [arrayOfDates, setArrayOfDates] = useState([]);
-    const [dateSelected, setDateSelected] = useState('')
+    const trainData = state.trainData
+    console.log(trainData)
     const trainId = trainData.id;
     console.log(trainId)
+
+    const [dateOfTravelling, setDateOfTravelling] = useState('');
+
+
     const navigate = useNavigate();
+    console.log(dateOfTravelling);
 
-    useEffect(() => {
-
-        const url = `${URL}/trains/selectDate/${trainId}`
-        axios.get(url).then(response => {
+    const addSchedule = () => {
+        const body = {
+            trainId,
+            dateOfTravelling
+        }
+        const url = `${URL}/trainSchedule/addSchedule`
+        axios.post(url, body).then((response) => {
             const result = response.data
-            console.log(result.data)
-            console.log("date of travellings")
-            setArrayOfDates(result.data)
-            if (result['status'] === 'success') {
-                setArrayOfDates(result.data)
-                console.log("sam")
+            if (result['status'] == 'success') {
+                toast.success(`${trainData.trainName} Train Schedule added Successfully`)
+                navigate("/trainDetails")
                 console.log(result.data)
-            } else {
-                toast.error(result['error'])
-                console.log("error")
             }
+            else
+                toast.error(result['error'])
         })
-    }, [])
-
-
-    const handleChange = (event) => {
-        setDateSelected(event.target.value)
-
-    };
-    console.log(dateSelected)
-
-    const bookTicket = () => {
-        navigate("/addPassenger", { state: { dataofTrain: trainData, dateOfTrav: dateSelected } })
+        console.log(body)
+       
     }
 
     return (
         <div style={{ marginTop: "20px" }} className='container'>
             <h1>Train Details</h1>
             <table style={{ border: "solid" }} className="table table-hover">
-                <thead className="table-dark">
+                <thead>
                     <tr>
                         <th scope="col">Train Id</th>
                         <th scope="col">Train Name</th>
@@ -79,29 +72,29 @@ const SingleTrainDetails = () => {
                     </tr>
                 </tbody>
             </table>
-            <div className="label-control">Available Date of travelling</div>
-            <label type="date" className="form-control">
-                <select type="date" className="form-control" onChange={handleChange}>
-                    <option style={{ textAlign: "center" }}>--Select Date of Travelling--</option>
-                    {arrayOfDates.map((f) => (
-                        <option value={f}>{f}</option>
-                    ))}
-                </select>
-            </label>
             <div className="row">
+                <div className="row">
+                    <div className="label-control ">Add Date :</div>
+
+                    <input id='2' onChange={(e) => {
+                        setDateOfTravelling(e.target.value)
+                    }} type="date" className="form-control" >
+
+                    </input>
+                </div>
+                <div className="col"></div>
                 <div className="col"></div>
                 <div className="col">
-                    <button onClick={bookTicket}
+                    <button onClick={addSchedule}
                         className="btn-primary"
                         style={{ borderRadius: "7px", marginTop: "50px", width: "100%", height: "40px" }}>
-                        Book
+                        Add Schedule
                     </button>
                 </div>
                 <div className="col"></div>
             </div>
-
         </div>
     )
 }
 
-export default SingleTrainDetails
+export default AddSchedule

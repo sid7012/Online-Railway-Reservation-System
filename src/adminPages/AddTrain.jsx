@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
 import { toast } from "react-toastify"
 import { URL } from '../config'
@@ -13,17 +13,18 @@ const AddTrain = () => {
   const [destCity, setDestCity] = useState('')
   const [departureTime, setDepartureTime] = useState('')
   const [reachTime, setReachTime] = useState('')
-  const [acSeatingSeatCount, setACSeatCountSitting] = useState('')
-  const [acSleeperSeatCount, setACSeatCountSleeping] = useState('')
-  const [nonAcSeatingSeatCount, setNonACSeatCountSitting] = useState('')
-  const [nonAcSleeperSeatCount, setNonACSeatCountSleeping] = useState('')
-  const [acSeatingSeatPrice, setACSeatPriceSitting] = useState('')
-  const [acSleeperSeatPrice, setACSeatPriceSleeping] = useState('')
-  const [nonAcSeatingSeatPrice, setNonACSeatPriceSitting] = useState('')
-  const [nonAcSleeperSeatPrice, setNonACSeatPriceSleeping] = useState('')
-  const [totalSeatCount, setTotalSeatCount] = useState('')
+  const [acSeatingSeatCount, setACSeatCountSitting] = useState(0)
+  const [acSleeperSeatCount, setACSeatCountSleeping] = useState(0)
+  const [nonAcSeatingSeatCount, setNonACSeatCountSitting] = useState(0)
+  const [nonAcSleeperSeatCount, setNonACSeatCountSleeping] = useState(0)
+  const [acSeatingSeatPrice, setACSeatPriceSitting] = useState(0)
+  const [acSleeperSeatPrice, setACSeatPriceSleeping] = useState(0)
+  const [nonAcSeatingSeatPrice, setNonACSeatPriceSitting] = useState(0)
+  const [nonAcSleeperSeatPrice, setNonACSeatPriceSleeping] = useState(0)
+  const [totalSeatCount, setTotalSeatCount] = useState(0)
 
   const addTrain = () => {
+
 
     const body = {
       trainName,
@@ -40,39 +41,37 @@ const AddTrain = () => {
       nonAcSeatingSeatPrice,
       nonAcSleeperSeatPrice,
       totalSeatCount
-
     }
+
     const url = `${URL}/trains/`
-    if (trainName == 0)
+    if (trainName === '')
       toast.error('Name is Empty')
-    else if (startCity == 0)
+    else if (startCity === '')
       toast.error('Source City is Empty')
-    else if (destCity == 0)
+    else if (destCity === '')
       toast.error('Destination City is Empty')
-    else if (departureTime == 0)
+    else if (departureTime === '')
       toast.error('Departure Time is Empty')
-    else if (reachTime == 0)
+    else if (reachTime === '')
       toast.error('Reach Time is Empty')
-    else if (acSeatingSeatCount == 0)
+    else if (acSeatingSeatCount === 0)
       toast.error('AC Seating Seat Count is Empty')
-    else if (acSleeperSeatCount == 0)
+    else if (acSleeperSeatCount === 0)
       toast.error('Ac Sleeper Seat Count is Empty')
-    else if (nonAcSeatingSeatCount == 0)
+    else if (nonAcSeatingSeatCount === 0)
       toast.error('non AC Seating Seat Count is Empty')
-    else if (nonAcSleeperSeatCount == 0)
+    else if (nonAcSleeperSeatCount === 0)
       toast.error('non AC Sleeper Seat Count is Empty')
-    else if (acSeatingSeatPrice == 0)
+    else if (acSeatingSeatPrice === 0)
       toast.error('AC Seating Seat Price is Empty')
-    else if (acSleeperSeatPrice == 0)
+    else if (acSleeperSeatPrice === 0)
       toast.error('AC Sleeper Seat Price is Empty')
-    else if (nonAcSeatingSeatPrice == 0)
+    else if (nonAcSeatingSeatPrice === 0)
       toast.error('non AC Seating Seat Price is Empty')
-    else if (nonAcSleeperSeatPrice == 0)
+    else if (nonAcSleeperSeatPrice === 0)
       toast.error('non AC Sleeper Seat Price is Empty')
-    else if (totalSeatCount == 0)
+    else if (totalSeatCount === 0)
       toast.error('Total Seat Count is Empty')
-
-
     else {
       axios.post(url, body).then((response) => {
 
@@ -198,7 +197,7 @@ const AddTrain = () => {
           </div>
           <div className="col">
             <div className="label-control">Total Seat Count :</div>
-            <input onChange={(e) => {
+            <input onChange={(e)=>{
               setTotalSeatCount(e.target.value)
             }} type="number" className="form-control" />
           </div>

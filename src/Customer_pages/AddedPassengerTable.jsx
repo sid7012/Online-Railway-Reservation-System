@@ -3,8 +3,8 @@ import React from 'react'
 const AddedPassengerTable = (props) => {
     return (
         <div className='container'>
-            <table style={{ border: "solid" }} className="table table-hover">
-                <thead>
+            <table style={{ border: "solid" }} className="table table-hover ">
+                <thead className="table table-hover table-success">
                     <tr>
                         <th scope="col">FirstName</th>
                         <th scope="col">LastName</th>

@@ -18,8 +18,7 @@ const SearchingTrain = () => {
     const navigate = useNavigate();
     useEffect(() => {
         const url = `${URL}/trains/from`
-        axios.get(url).then(response => 
-            {
+        axios.get(url).then(response => {
             const result = response.data
             console.log(result.data)
             if (result['status'] === 'success') {
@@ -59,30 +58,33 @@ const SearchingTrain = () => {
             startCity,
             destCity
         }
-        const url = `${URL}/trains/listOfTrains`
-        axios.post(url, body).then(response => {
-            const result = response.data
-            console.log(result.data)
-            console.log("list of trains called")
-            if (result['status'] === 'success') {
-                navigate("/singleTrainDetails", { state: { data: result.data } })
-                setTo(result['data'])
-            } else
-                toast.error(result['error'])
-
-        })
+        if (destCity !== '') {
+            const url = `${URL}/trains/listOfTrains`
+            axios.post(url, body).then(response => {
+                const result = response.data
+                console.log(result.data)
+                console.log("list of trains called")
+                if (result['status'] === 'success') {
+                    navigate("/singleTrainDetails", { state: { data: result.data } })
+                    setTo(result['data'])
+                } else
+                    toast.error(result['error'])
+            })
+        }
+        else
+            toast.warning("Please select the dest city..!!")
     }
     return (
 
-        <div style={{marginTop:"50px"}} className="container">
+        <div style={{ marginTop: "50px" }} className="container">
             <div className="form">
                 <div className="row">
                     <div className="col"></div>
                     <div className="col">
-                        <div style={{fontSize:"30px"}} className="label-control">Start City :</div>
+                        <div style={{ fontSize: "30px" }} className="label-control">Start City :</div>
                         <label type="text" className="form-control">
                             <select type="text" className="form-control" value={startCity} onChange={handleChange}>
-                                <option style={{textAlign:"center"}}>--Select Start City--</option>
+                                <option style={{ textAlign: "center" }}>--Select Start City--</option>
                                 {from.map((f) => (
                                     <option value={f}>{f}</option>
                                 ))}
@@ -92,15 +94,15 @@ const SearchingTrain = () => {
                     <div className="col">
                         <button onClick={getfrom}
                             className="btn-primary"
-                            style={{ borderRadius: "7px", marginTop: "50px", width: "100%", height:"40px" }}>get
+                            style={{ borderRadius: "7px", marginTop: "50px", width: "100%", height: "40px" }}>get
                         </button>
 
                     </div>
                     <div className="col">
-                        <div style={{fontSize:"30px"}} className="label-control">Destination City :</div>
+                        <div style={{ fontSize: "30px" }} className="label-control">Destination City :</div>
                         <label type="text" className="form-control">
                             <select type="text" className="form-control" value={destCity} onChange={sam}>
-                                <option style={{textAlign:"center"}}>--Select Dest City--</option>
+                                <option style={{ textAlign: "center" }}>--Select Dest City--</option>
                                 {to.map((f) => (
                                     <option value={f}>{f}</option>
                                 ))}

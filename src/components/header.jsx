@@ -1,18 +1,13 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+
 // import { a } from "react-router-dom";
 
 const Header = () => {
-
-
   const logoutUser = () => {
     // remove the logged users details from session storage
     sessionStorage.removeItem('id');
     sessionStorage.removeItem('firstName');
     sessionStorage.removeItem('loginStatus');
-
-
-
   }
   return (
 

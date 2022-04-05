@@ -74,10 +74,9 @@ const Signup = () => {
         navigate("/signin")
     }
 
-
     return (
         <div className="container">
-            <h1> Sign Up Here </h1>
+            <h1> Sign Up </h1>
             <div className="row">
                 <div className="col">
                     <div className="form">

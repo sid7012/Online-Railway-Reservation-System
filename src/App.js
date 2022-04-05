@@ -1,4 +1,3 @@
-
 import TrainDetails from './adminPages/TrainDetails'
 import AddTrain from './adminPages/AddTrain'
 import Signin from './adminPages/Signin'
@@ -14,16 +13,15 @@ import AddAdmin from './adminPages/AddAdmin'
 import SingleTrainDetails from './Customer_pages/SingleTrainDetails'
 import TrainSchedule from './Customer_pages/TrainSchedule'
 import AddPassenger from './Customer_pages/AddPassenger'
+import Payment from './Customer_pages/Payment'
+import AddSchedule from './adminPages/AddSchedule'
+
 
 function App() {
   const AuthorizeUser = () => {
     const loginStatus = sessionStorage['loginStatus']
     return loginStatus == '1' ? <Home /> : <Signin />
-    // if (loginStatus == '1') {
-    //   return <Home />
-    // } else {
-    //   return <Signin />
-    // }
+ 
   }
   return (
     <div className='container-fluid'>
@@ -43,6 +41,8 @@ function App() {
           <Route path="/singleTrainDetails" element={<SingleTrainDetails />} />
           <Route path="/trainSchedule" element={<TrainSchedule />} />
           <Route path="/addPassenger" element={<AddPassenger />} />
+          <Route path="/addSchedule" element={<AddSchedule />} />
+          <Route path="/payment" element={<Payment />} />
           <Route path="/addAdmin" element={<AddAdmin />} />
         </Routes>
       </BrowserRouter>
