@@ -25,7 +25,7 @@ function App() {
   }
   return (
     <div className='container-fluid'>
-      <Header />
+      <Header/>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<AuthorizeUser />} />

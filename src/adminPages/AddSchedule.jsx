@@ -20,23 +20,30 @@ const AddSchedule = () => {
     console.log(dateOfTravelling);
 
     const addSchedule = () => {
-        const body = {
-            trainId,
-            dateOfTravelling
-        }
-        const url = `${URL}/trainSchedule/addSchedule`
-        axios.post(url, body).then((response) => {
-            const result = response.data
-            if (result['status'] == 'success') {
-                toast.success(`${trainData.trainName} Train Schedule added Successfully`)
-                navigate("/trainDetails")
-                console.log(result.data)
+        if (trainId === 0)
+            toast.warning("Train not found..!!")
+        else if (dateOfTravelling.length === 0)
+            toast.warning("Please select the date..!!")
+        else {
+            const body = {
+                trainId,
+                dateOfTravelling
             }
-            else
-                toast.error(result['error'])
-        })
-        console.log(body)
-       
+            const url = `${URL}/trainSchedule/addSchedule`
+            axios.post(url, body).then((response) => {
+                const result = response.data
+                if (result['status'] === 'success') {
+                    toast.success(`${trainData.trainName} Train Schedule added Successfully`)
+                    navigate("/trainDetails")
+                    console.log(result.data)
+                }
+                else
+                    toast.error(result['error'])
+            })
+            console.log(body)
+        }
+
+
     }
 
     return (

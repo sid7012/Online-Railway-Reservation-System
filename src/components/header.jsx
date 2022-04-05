@@ -1,52 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 
-// import { a } from "react-router-dom";
 
-const Header = () => {
-  const logoutUser = () => {
-    // remove the logged users details from session storage
-    sessionStorage.removeItem('id');
-    sessionStorage.removeItem('firstName');
-    sessionStorage.removeItem('loginStatus');
-  }
+import ReorderIcon from "@material-ui/icons/Reorder";
+import "./Header.css";
+import{ BrowserRouter as Router, a, Routes, Route } from "react-router-dom";
+
+function Header() {
+  const [openLinks, sehrefpenLinks] = useState(false);
+
+  const onLogOutClick = () => {
+    window.localShrefrage.clear();
+
+}
+
+
+  const hrefggleNavbar = () => {
+    sehrefpenLinks(!openLinks);
+  };
   return (
-
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div className="container">
-        <div className="collapse navbar-collapse">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <a className="nav-link" href="/home" >
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link " href="/about">
-                About Us
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/signup">
-                Sign Up
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/signin">
-                Sign In
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div style={{ marginBottom: "2px", fontSize: "20px" }} className="nav-item">
-          <li className="nav-item">
-            <a className="nav-link" href="/signin" onClick={logoutUser}>
-              Logout
-            </a>
-          </li>
+    <div className="navbar">
+      <div className="leftSide" id={openLinks ? "open" : "close"}>
+        
+        <div className="hiddenLinks">
+          <a href="/"> Home </a>
+          <a href="/menu"> Menu </a>
+          <a href="/about"> About </a>
+          <a href="/contact"> Contact </a>
+          <a href="/signin"> Admin </a>
+        <a href="/signin"> User </a>
+        <a href="/logout"> LogOut </a>
         </div>
       </div>
-    </nav>
+      <div className="rightSide">
+        <a href="/home"> Home </a>
+        <a href="/signin"> Admin </a>
+        <a href="/signin"> User </a>
+        <a href="/searchingTrain"> search Train </a>
+        <a href="/addAdmin"> Add Admin </a>
+        <a onClick={onLogOutClick}
+          href="/user_login"> LogOut </a>
+        
+        
+        <buthrefn onClick={hrefggleNavbar}>
+          <ReorderIcon />
+        </buthrefn>
+      </div>
+    </div>
   );
-};
+}
 
 export default Header;

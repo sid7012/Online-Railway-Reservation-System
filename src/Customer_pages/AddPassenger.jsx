@@ -1,15 +1,16 @@
-import React, {useState } from 'react'
+import React, { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import AddedPassengerTable from './AddedPassengerTable'
 import Swal from 'sweetalert2'
+import TrainTableComponent from '../components/TrainTableComponent'
 
 const AddPassenger = () => {
     const { state } = useLocation();
     const navigate = useNavigate();
     console.log(state)
     const trainData = state
-
+    const sam = trainData.dataofTrain
     // console.log(state.dateOfTrav)
     const [arrayOfPassenger, setArrayOfPassenger] = useState([]);
 
@@ -58,7 +59,6 @@ const AddPassenger = () => {
                     navigate("/payment", { state: { arrayOfPassenger, trainData } })
                 } else if (result.isDenied) {
                     Swal.fire('Changes are not saved', '', 'info')
-                    navigate("/addPassenger")
                 }
             })
         }
@@ -69,6 +69,7 @@ const AddPassenger = () => {
 
     return (
         <div style={{ marginTop: "20px" }} className="container-">
+            <TrainTableComponent sam={sam} />
             <h1>Add Paseenger details</h1>
             <div className="form">
                 <div className="row">
@@ -144,7 +145,7 @@ const AddPassenger = () => {
 
             <div style={{ marginTop: "50px" }} className="row">
                 {(arrayOfPassenger.length !== 0) ? arrayOfPassenger.map((s) => {
-                    return <AddedPassengerTable  sam={s} />
+                    return <AddedPassengerTable sam={s} />
                 }) : ""}
             </div>
             <div className="row">

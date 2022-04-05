@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import TrainTableComponent from '../components/TrainTableComponent'
 import { URL } from '../config'
 
 const SingleTrainDetails = () => {
@@ -48,37 +49,7 @@ const SingleTrainDetails = () => {
 
     return (
         <div style={{ marginTop: "20px" }} className='container'>
-            <h1>Train Details</h1>
-            <table style={{ border: "solid" }} className="table table-hover">
-                <thead className="table-dark">
-                    <tr>
-                        <th scope="col">Train Id</th>
-                        <th scope="col">Train Name</th>
-                        <th scope="col">Start City</th>
-                        <th scope="col">Destination City</th>
-                        <th scope="col">Departure Time</th>
-                        <th scope="col">Reach Time</th>
-                        <th scope="col">AC Sleeper Fair</th>
-                        <th scope="col">AC Seating Fair</th>
-                        <th scope="col">non-AC Sleeper Fair</th>
-                        <th scope="col">non-AC Seating Fair</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{trainData.id}</td>
-                        <td>{trainData.trainName}</td>
-                        <td>{trainData.startCity}</td>
-                        <td>{trainData.destCity}</td>
-                        <td>{trainData.departureTime}</td>
-                        <td>{trainData.reachTime}</td>
-                        <td>{trainData.acSleeperSeatPrice}</td>
-                        <td>{trainData.acSeatingSeatPrice}</td>
-                        <td>{trainData.nonAcSleeperSeatPrice}</td>
-                        <td>{trainData.nonAcSeatingSeatPrice}</td>
-                    </tr>
-                </tbody>
-            </table>
+           <TrainTableComponent sam={trainData}/>
             <div className="label-control">Available Date of travelling</div>
             <label type="date" className="form-control">
                 <select type="date" className="form-control" onChange={handleChange}>
