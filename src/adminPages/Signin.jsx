@@ -1,11 +1,12 @@
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Signin.css";
-import {  toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import { URL } from "../config";
+
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -33,7 +34,10 @@ const Signin = () => {
 
           sessionStorage["id"] = result.data.id;
           sessionStorage["firstName"] = result.data.firstName;
-          sessionStorage["loginStatus"] = 1;
+          if(result.data.role === "admin")
+            sessionStorage["loginStatus"] = 1;
+          if(result.data.role === "user")
+            sessionStorage["loginStatus"] = 2;
 
           // console.log(sessionStorage.id)
           // console.log(sessionStorage.firstName)
@@ -41,7 +45,7 @@ const Signin = () => {
           toast.error(result["error"]);
         }
 
-        (result.data.role === "admin") ? navigate("/trainDetails") : navigate("/searchingTrain")
+        (result.data.role === "admin") ? navigate("/adminfunctinality") : navigate("/userfunctinality")
         console.log(result);
       });
     }
@@ -52,7 +56,7 @@ const Signin = () => {
       <br>
       </br>
 
-      <div className="container" style={{font:"50px", color: "black", fontFamily:"inherit" }} >
+      <div className="container" style={{ font: "50px", color: "black", fontFamily: "inherit" }} >
         <h1>Login</h1>
         <br>
 
@@ -102,9 +106,9 @@ const Signin = () => {
                 <button
                   onClick={signinUser}
                   className="btn btn-primary"
-                  style={{ borderRadius: "7px", marginTop: "10px", }}>
+                  style={{ borderRadius: "30px", marginTop: "10px", width:"400px" }}>
                   Submit
-                </button>
+                </button> 
               </div>
             </div>
           </div>

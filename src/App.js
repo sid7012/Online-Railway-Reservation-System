@@ -23,10 +23,13 @@ import TermAndCondition from './adminPages/TermAndCondition'
 import PrivacyPolicy from './adminPages/PrivacyPolicy'
 import FAQSScreen from './adminPages/FAQSScreen'
 
+import AdminFunctinality from './adminPages/AdminFunctinality'
+import UserFunctionality from './Customer_pages/UserFunctionality'
+
 function App() {
   const AuthorizeUser = () => {
     const loginStatus = sessionStorage['loginStatus']
-    return loginStatus !== '1' ? <Home /> : <SearchingTrain />
+    return loginStatus !== '1' ? <Home /> : <AdminFunctinality />
   }
 
   return (
@@ -35,6 +38,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<AuthorizeUser />} />
+          {}
           <Route path="/links" element={<Links />} />
           <Route path="/home" element={<Home />} />
           <Route path="/header" element={<Header />} />
@@ -56,6 +60,8 @@ function App() {
           <Route path="/termsnconditions" element={<TermAndCondition />} />
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
           <Route path="/faqs" element={<FAQSScreen />} />
+          <Route path="/adminfunctinality" element={<AdminFunctinality />} />
+          <Route path="/userfunctinality" element={<UserFunctionality />} />
         </Routes>
       </BrowserRouter>
       <Footer />

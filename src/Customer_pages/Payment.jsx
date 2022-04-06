@@ -67,22 +67,22 @@ const Payment = () => {
                 console.log("Ticket added")
                 toast.success("Ticket confirmed..!!")
                 //ticket id is generated from above method & used next axios call of passenger add 
-                let ticketId = result.data.id
+                let ticketId = parseInt(result.data.id)
                 console.log(ticketId)
                 //for getting ticket id 
                 //we applied for loop bcoz it is array oo diffrent object came from state
                 let sam = {};
                 for (let i = 0; i < state.arrayOfPassenger.length; i++) {
                     //this is called as object spreading
-                    sam = { ...state.arrayOfPassenger[0], userId, trainId, ticketId, dateOfTravelling }
+                    sam = { ...state.arrayOfPassenger[i], userId, trainId, ticketId, dateOfTravelling }
                     arrayToBackend.push(sam)
                 }
                 //checked that array of objects is produced or not
                 console.log("ala re", arrayToBackend)
                 
                 //this axios call will put the entry of passengers in passenger table
-                const url2 = `${URL}/users/addPassengerList`
-                axios.post(url2, arrayToBackend).then(response => {
+                const url2 = `${URL}/users/addPassengerList/${ticketId}`
+                axios.post(url2, arrayToBackend, ticketId).then(response => {
                     const result = response.data
                     console.log("passList: ", result.data)
                     if (result['status'] === 'success') {

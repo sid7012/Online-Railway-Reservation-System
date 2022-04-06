@@ -4,6 +4,7 @@ import { toast } from "react-toastify"
 import { URL } from '../config'
 import { useNavigate } from 'react-router'
 
+
 const AddTrain = () => {
 
   const navigate = useNavigate()
@@ -23,9 +24,8 @@ const AddTrain = () => {
   const [nonAcSleeperSeatPrice, setNonACSeatPriceSleeping] = useState(0)
   const [totalSeatCount, setTotalSeatCount] = useState(0)
 
+ 
   const addTrain = () => {
-
-
     const body = {
       trainName,
       startCity,
@@ -42,7 +42,6 @@ const AddTrain = () => {
       nonAcSleeperSeatPrice,
       totalSeatCount
     }
-
     const url = `${URL}/trains/`
     if (trainName === '')
       toast.error('Name is Empty')
@@ -70,13 +69,9 @@ const AddTrain = () => {
       toast.error('non AC Seating Seat Price is Empty')
     else if (nonAcSleeperSeatPrice === 0)
       toast.error('non AC Sleeper Seat Price is Empty')
-    else if (totalSeatCount === 0)
-      toast.error('Total Seat Count is Empty')
     else {
       axios.post(url, body).then((response) => {
-
         const result = response.data
-
         if (result['status'] === 'success') {
           toast.success('Train added Successfully')
           navigate("/trainDetails")
@@ -92,7 +87,6 @@ const AddTrain = () => {
   }
 
   return (
-
 
     <div className="container">
       <h2> Add Train here </h2>
@@ -197,15 +191,16 @@ const AddTrain = () => {
           </div>
           <div className="col">
             <div className="label-control">Total Seat Count :</div>
-            <input onChange={(e)=>{
+            <input onChange={(e) => {
               setTotalSeatCount(e.target.value)
-            }} type="number" className="form-control" />
+            }} value={totalSeatCount} type="number" className="form-control" />
           </div>
         </div>
         <div>
-          <button style={{ marginTop: "10px" }} onClick={addTrain} className="btn-primary" >Add Train</button>
+          <button style={{ marginTop: "10px", borderRadius: "30px", width: "200px", height: "40px" }}
+            onClick={addTrain} className="btn-primary button" >Add Train</button>
 
-          <button style={{ marginTop: "10px" }} onClick={cancel} className="btn-danger float-end">Cancel</button>
+          <button style={{ marginTop: "10px", borderRadius: "30px", width: "200px", height: "40px" }} onClick={cancel} className="btn-danger float-end ">Cancel</button>
         </div>
       </div>
     </div>

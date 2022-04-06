@@ -1,5 +1,3 @@
-
-import './searchingTrain.css'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from 'react';
@@ -94,7 +92,7 @@ const SearchingTrain = () => {
                     <div className="col">
                         <button onClick={getfrom}
                             className="btn-primary"
-                            style={{ borderRadius: "7px", marginTop: "50px", width: "100%", height: "40px" }}>get
+                            style={{ borderRadius: "30px", marginTop: "50px", width: "100%", height: "40px" }}>get
                         </button>
 
                     </div>
@@ -119,7 +117,7 @@ const SearchingTrain = () => {
                 <div className="col">
                     <button onClick={search}
                         className="btn-danger"
-                        style={{ borderRadius: "7px", marginTop: "50px", width: "100%", height: "40px", marginBottom:"250px" }}>
+                        style={{ borderRadius: "30px", height: "40px", marginTop: "50px", width: "100%", height: "40px", marginBottom: "250px" }}>
                         Search
                     </button>
                 </div>
