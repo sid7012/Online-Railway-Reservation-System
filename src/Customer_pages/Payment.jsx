@@ -79,7 +79,7 @@ const Payment = () => {
                 }
                 //checked that array of objects is produced or not
                 console.log("ala re", arrayToBackend)
-                
+
                 //this axios call will put the entry of passengers in passenger table
                 const url2 = `${URL}/users/addPassengerList/${ticketId}`
                 axios.post(url2, arrayToBackend, ticketId).then(response => {
@@ -87,6 +87,7 @@ const Payment = () => {
                     console.log("passList: ", result.data)
                     if (result['status'] === 'success') {
                         toast.success("Passenger added...!!")
+                        navigate("/ticket", { state: { passList: array, trainData:trainDetails  } })
                     } else {
                         toast.error(result['error'])
                     }
@@ -134,7 +135,7 @@ const Payment = () => {
 
     return (
         <div className="container" style={{ font: "50px", color: "black", fontFamily: "inherit" }} >
-            <h1 style={{ color: "red" }}>Payement</h1>
+            <h1 style={{ color: "red" }}>Payment</h1>
             <br>
             </br>
             <div className="row" >

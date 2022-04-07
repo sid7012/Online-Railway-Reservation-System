@@ -40,7 +40,7 @@ const AddTrain = () => {
       acSleeperSeatPrice,
       nonAcSeatingSeatPrice,
       nonAcSleeperSeatPrice,
-      totalSeatCount
+      totalSeatCount:0
     }
     const url = `${URL}/trains/`
     if (trainName === '')
@@ -189,17 +189,11 @@ const AddTrain = () => {
               setNonACSeatPriceSleeping(e.target.value)
             }} type="number" className="form-control" />
           </div>
-          <div className="col">
-            <div className="label-control">Total Seat Count :</div>
-            <input onChange={(e) => {
-              setTotalSeatCount(e.target.value)
-            }} value={totalSeatCount} type="number" className="form-control" />
-          </div>
+          <div className="col"></div>
         </div>
         <div>
           <button style={{ marginTop: "10px", borderRadius: "30px", width: "200px", height: "40px" }}
             onClick={addTrain} className="btn-primary button" >Add Train</button>
-
           <button style={{ marginTop: "10px", borderRadius: "30px", width: "200px", height: "40px" }} onClick={cancel} className="btn-danger float-end ">Cancel</button>
         </div>
       </div>

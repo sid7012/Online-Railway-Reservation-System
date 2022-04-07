@@ -9,6 +9,7 @@ function Header() {
     window.sessionStorage.clear();
   }
 
+
   return (
     <div className="navbar">
       <div className="leftSide" id={openLinks ? "open" : "close"}>
@@ -24,11 +25,22 @@ function Header() {
       </div>
       <div className="rightSide">
         <a href="/home"> Home </a>
+        {
+          sessionStorage.loginStatus == 1 ?
+            (<a href="/adminfunctinality"> Dashboard </a>) :
+            sessionStorage.loginStatus == 2 ?
+              (<a href="/userfunctinality"> Dashboard </a>) : ""
+        }
         <a href="/signin"> User Login </a>
         <a href="/signin"> Admin Login </a>
-        <a onClick={onLogOutClick}
-        href="/signin"> LogOut </a>
-
+        {
+          sessionStorage.loginStatus == 1 ?
+            (<a onClick={onLogOutClick}
+              href="/signin"> LogOut </a>) :
+            sessionStorage.loginStatus == 2 ?
+              (<a onClick={onLogOutClick}
+                href="/signin"> LogOut </a>) : ""
+        }
       </div>
     </div>
   );

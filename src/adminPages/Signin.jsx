@@ -46,6 +46,7 @@ const Signin = () => {
         }
 
         (result.data.role === "admin") ? navigate("/adminfunctinality") : navigate("/userfunctinality")
+        document. location. reload() 
         console.log(result);
       });
     }

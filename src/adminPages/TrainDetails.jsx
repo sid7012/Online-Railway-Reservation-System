@@ -33,39 +33,10 @@ const TrainDetails = () => {
       <div className="container">
         <div className="row">
           <div className="col">
-            <button
-              onClick={() => {
-                navigate("/addTrain");
-              }}
-              type="button"
-              className="btn btn-primary">
-              Add New Train
-            </button>
           </div>
-          <div className="col"></div>
-          <div className="col">
-
-          </div>
-
-          <div className="col">
-
-          </div>
-
-          <div className="col"></div>
-          <div className="col"> <button
-            onClick={() => {
-              navigate("/addAdmin");
-            }}
-            type="button"
-            className="btn btn-primary"
-          >
-            Add New Admin
-          </button></div>
         </div>
       </div>
-
       <h2 style={{ textAlign: "center" }}>Train Details</h2>
-
       {trains.map((t) => {
         return <Train key={t.id} sam={t} />;
       })}

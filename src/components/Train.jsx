@@ -43,7 +43,7 @@ const Train = (props) => {
                         <th scope="col">Dest city</th>
                         <th scope="col">Departure Time</th>
                         <th scope="col">Reach Time</th>
-                        <th scope="col">Total Seat Count</th>
+                        <th scope="col">Capacity</th>
                         <th scope="col">Edit</th>
                         <th scope="col">Delete</th>
                         <th scope="col">AddSchedule</th>
@@ -76,9 +76,6 @@ const Train = (props) => {
                     </tr>
                 </tbody>
             </table>
-
-
-
         </div>
     )
 }
