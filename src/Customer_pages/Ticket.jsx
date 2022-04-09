@@ -30,6 +30,8 @@ const Ticket = () => {
             <h3>Date of Travelling: {state.trainData.dateOfTrav}</h3>
             <h3>Boarding Time: {state.trainData.dataofTrain.departureTime}</h3>
             <h3>Reach Time: {state.trainData.dataofTrain.reachTime}</h3>
+            <h3>Fare: {state.ticketObj.ticketAmount}</h3>
+            <h3>Ticket No.: {state.ticketObj.id}</h3>
           </div>
         </div>
         <div className="col"></div>

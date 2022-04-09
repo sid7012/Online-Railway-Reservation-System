@@ -34,6 +34,7 @@ const Signin = () => {
 
           sessionStorage["id"] = result.data.id;
           sessionStorage["firstName"] = result.data.firstName;
+          sessionStorage["email"] = result.data.email;
           if(result.data.role === "admin")
             sessionStorage["loginStatus"] = 1;
           if(result.data.role === "user")

@@ -36,6 +36,11 @@ const Payment = () => {
     const dateOfTravelling = trainDetails.dateOfTrav
     let arrayToBackend = []
 
+    //variables are used the send the email
+    const destEmail = sessionStorage.email
+    const subject = "Railway reservation Ticket"
+    let message = "Congratulations..!! Ticket Booked"
+
     // const sam = { ...state.arrayOfPassenger[0], s: "sam" }
     // console.log(sam)
 
@@ -68,6 +73,7 @@ const Payment = () => {
                 toast.success("Ticket confirmed..!!")
                 //ticket id is generated from above method & used next axios call of passenger add 
                 let ticketId = parseInt(result.data.id)
+                let ticketObj = result.data
                 console.log(ticketId)
                 //for getting ticket id 
                 //we applied for loop bcoz it is array oo diffrent object came from state
@@ -87,11 +93,33 @@ const Payment = () => {
                     console.log("passList: ", result.data)
                     if (result['status'] === 'success') {
                         toast.success("Passenger added...!!")
-                        navigate("/ticket", { state: { passList: array, trainData:trainDetails  } })
+                        const mailBody = {
+                            destEmail,
+                            subject,
+                            message:`Train Name: ${trainDetails.dataofTrain.trainName}
+                                    Start City: ${trainDetails.dataofTrain.startCity}
+                                    Start City: ${trainDetails.dataofTrain.destCity}
+                                    Date of Travelling: ${trainDetails.dateOfTrav}
+                                    Boarding Time: ${trainDetails.dataofTrain.departureTime}
+                                    Reach Time: ${trainDetails.dataofTrain.reachTime}
+                                    Fare: ${ticketObj.ticketAmount}`
+                        }
+                        const url3 = `${URL}/tickets/sendMail`
+                        axios.post(url3, mailBody).then(response => {
+                            const result = response.data
+                            console.log("Ticket mail: ", result.data)
+                            if (result['status'] === 'success') {
+                                toast.success("Ticket sent to your mail....!!")
+                            } else {
+                                toast.error(result['error'])
+                            }
+                        })
+                        navigate("/ticket", { state: { passList: array, trainData: trainDetails, ticketObj } })
                     } else {
                         toast.error(result['error'])
                     }
                 })
+
             } else
                 toast.error(result['error'])
         })

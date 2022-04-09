@@ -28,6 +28,7 @@ import Ticket from './Customer_pages/Ticket'
 import ListOfTrains from './Customer_pages/ListOfTrains'
 import PassengerList from './Customer_pages/PassengerList'
 import CancelTicket from './Customer_pages/CancelTicket'
+import Forgot from './adminPages/Forgot'
 
 function App() {
   const AuthorizeUser = () => {
@@ -44,11 +45,13 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/forgetPassword" element={<ForgetPassword />} />
+          <Route path="/forgot" element={<Forgot />} />
+          
           {sessionStorage.loginStatus == 1 || sessionStorage.loginStatus == 2 ?
             <Route>
               <Route path="/addTrain" element={<AddTrain />} />
               <Route path="/trainDetails" element={<TrainDetails />} />
-              <Route path="/forgetPassword" element={<ForgetPassword />} />
               <Route path="/searchingTrain" element={<SearchingTrain />} />
               <Route path="/editTrain" element={<EditTrain />} />
               <Route path="/singleTrainDetails" element={<SingleTrainDetails />} />

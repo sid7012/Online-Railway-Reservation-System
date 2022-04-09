@@ -58,13 +58,16 @@ const SingleTrainDetails = () => {
                 : <h3 style={{textAlign:"center", color:"red"}}>Dates are not available</h3> }
             <div className="row">
                 <div className="col"></div>
-                <div style={{marginBottom:"170px"}} className="col">
+                {
+                    arrayOfDates.length !== 0 ?  <div style={{marginBottom:"170px"}} className="col">
                     <button onClick={bookTicket}
                         className="btn-primary"
                         style={{ borderRadius: "7px", marginTop: "50px", width: "100%", height: "40px" }}>
                         Book
                     </button>
-                </div>
+                </div>:""
+                }
+               
                 <div className="col"></div>
             </div>
 
