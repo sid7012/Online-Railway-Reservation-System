@@ -5,7 +5,10 @@ import axios from 'axios';
 import { URL } from '../config'
 import { useNavigate } from 'react-router-dom';
 
-
+//useEffect hook to fetch the list of starting cities
+// The useEffect hook is used to perform side effects in functional components. It takes two arguments: a callback function and a dependency array.
+// In this case, an empty dependency array [] indicates that the effect should only run once, immediately after the component is mounted.
+// The callback function inside useEffect contains the code that will be executed when the component mounts.
 const SearchingTrain = () => {
 
     const [from, setFrom] = useState([]);
@@ -26,9 +29,12 @@ const SearchingTrain = () => {
     }, [])
 
     const getfrom = () => {
+        //Constructs a URL for the API endpoint to fetch data about the destination cities based on the selected start city.
         const url = `${URL}/trains/to/${startCity}`
         axios.get(url).then(response => {
+            //Sends a GET request to the specified URL using the axios library. The .then() method is used to handle the response when it's received.
             const result = response.data
+            //const result = response.data;: Extracts the response data from the response object.
             console.log(result.data)
             console.log("sam")
             if (result['status'] === 'success') {
@@ -72,6 +78,7 @@ const SearchingTrain = () => {
         else
             toast.warning("Please select the dest city..!!")
     }
+    
     return (
 
         <div style={{ marginTop: "50px" }} className="container">
@@ -86,6 +93,7 @@ const SearchingTrain = () => {
                                 {from.map((f) => (
                                     <option value={f}>{f}</option>
                                 ))}
+                                 {/* When the user selects a different option, the handleChange function will be called. */}
                             </select>
                         </label>
                     </div>
@@ -104,9 +112,11 @@ const SearchingTrain = () => {
                                 {to.map((f) => (
                                     <option value={f}>{f}</option>
                                 ))}
+                                 {/* When the user selects a different option, the sam function will be called. */}
                             </select>
                         </label>
                     </div>
+                    
                     <div className="col"></div>
 
                 </div>

@@ -12,7 +12,7 @@ const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const navigate = useNavigate();
+  const navigate = useNavigate();//useNavigate hook is used to get the navigation function, which is later used to redirect users after successful login.
 
   const signinUser = () => {
     if (email.length === 0) toast.warning("Please enter email-id");
@@ -35,8 +35,14 @@ const Signin = () => {
           sessionStorage["id"] = result.data.id;
           sessionStorage["firstName"] = result.data.firstName;
           sessionStorage["email"] = result.data.email;
+          //This line stores the user's email address in the session storage.
+          //email is key and "result.data.email" this is value 
+
+          //Depending on the user's role (admin or user), the loginStatus is set in the session storage.
           if(result.data.role === "admin")
             sessionStorage["loginStatus"] = 1;
+
+          
           if(result.data.role === "user")
             sessionStorage["loginStatus"] = 2;
 
@@ -100,12 +106,14 @@ const Signin = () => {
               <div className="mb-3">
                 <div style={{ color: "white" }}>
                   Don't have an account ? <Link to="/signup"> Signup here</Link>
+                  Don't have an account ? <Link to="/AddAdmin"> Addadmin here</Link>
                 </div>
                 <div style={{ color: "white" }}>
                   Forgot Password ? <Link to="/forgetPassword"> Click here to reset your password</Link>
                 </div>
                 <br></br>
                 <button
+                type="submit"
                   onClick={signinUser}
                   className="btn btn-primary"
                   style={{ borderRadius: "30px", marginTop: "10px", width:"400px" }}>

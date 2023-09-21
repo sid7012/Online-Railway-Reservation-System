@@ -1,6 +1,6 @@
 .navbar {
     width: 100%;
-    height: 70px;
+    height: 100px;
     background-color: #121619;
     display: flex;
     flex-direction: row;
@@ -67,6 +67,10 @@
     width: 70px;
     margin: 5px;
   }
+  /* These styles are part of the mechanism that toggles the visibility of the hidden links within the navigation bar.
+   When the links are open (#open), the navigation bar adjusts its layout and displays the links with the specified margin and appearance. 
+   When the links are closed (#close), the navigation bar hides the links 
+  and often displays a button or icon that can be clicked to reveal the hidden links. */
   @media only screen and (max-width: 900px) {
     .navbar .rightSide a {
       width: 70px;

@@ -2,7 +2,8 @@ import React from "react";
 import { Link, parsePath } from "react-router-dom";
 
 const AdminCard = (props) => {
-  const data = props.bhushan
+  //in this we are passing data from props.siddhant to data
+  const data = props.siddhant
   const newdata = { ...data }
 
   console.log(newdata.msg)

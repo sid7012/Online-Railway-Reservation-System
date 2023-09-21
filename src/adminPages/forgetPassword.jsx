@@ -5,7 +5,7 @@ import React from 'react';
 import axios from 'axios'
 import { useNavigate } from 'react-router'
 import { URL } from '../config'
-import './forgetPassword.css'
+
 
 const ForgetPassword = () => {
 
@@ -19,6 +19,7 @@ const ForgetPassword = () => {
   const cancelReset = () => {
     navigate('/signin')
   }
+  //by clicking on cancel it will navigate you to the signin page
 
   const resetPassword = () => {
     if (email.length === 0) {

@@ -91,7 +91,7 @@ const EditTrain = () => {
         })
     }
 
-    const bhushan = () => {
+    const siddhant = () => {
         navigate("/trainDetails")
     }
     return (
@@ -170,7 +170,7 @@ const EditTrain = () => {
                 </div>
                 <div>
                     <button style={{ marginTop: "10px" }} onClick={editHandler} className="btn-primary" >Edit Train</button>
-                    <button style={{ margin: "10px" }} onClick={bhushan} className="btn-danger float-end">Cancel</button>
+                    <button style={{ margin: "10px" }} onClick={siddhant} className="btn-danger float-end">Cancel</button>
                 </div>
 
                 {/* following tags are hidden bcoz those r silentely sending data to the backend */}

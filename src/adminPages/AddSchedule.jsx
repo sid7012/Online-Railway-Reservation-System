@@ -4,10 +4,11 @@ import { useLocation } from 'react-router'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { URL } from '../config'
-
+//using the useLocation hook to access the state, 
+//you can receive data that was sent from another route.
 const AddSchedule = () => {
     const { state } = useLocation()
-
+    //trainId: Extracts the id from trainData
     const trainData = state.trainData
     console.log(trainData)
     const trainId = trainData.id;

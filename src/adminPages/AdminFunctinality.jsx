@@ -53,23 +53,23 @@ const AdminFunctinality = () => {
         <div style={{ marginTop: "20px" }} className="container">
             <h1 style={{ color: "grey", textAlign: "center", fontFamily: "cursive", marginBottom: "20px" }}>Welcome {sessionStorage.firstName}</h1>
             <div className="row">
-                <div className="col"><Card bhushan={admin} /></div>
-                <div className="col"><Card bhushan={addTrain} /></div>
-                <div className="col"><Card bhushan={trainDetails} /></div>
+                <div className="col"><Card siddhant={admin} /></div>
+                <div className="col"><Card siddhant={addTrain} /></div>
+                <div className="col"><Card siddhant={trainDetails} /></div>
             </div>
             <div className="row">
-                <div className="col"><Card bhushan={searchingTrain} /></div>
-                <div className="col"><Card bhushan={forgetPassword} /></div>
-                <div className="col"><Card bhushan={trainDetails3} /></div>
+                <div className="col"><Card siddhant={searchingTrain} /></div>
+                <div className="col"><Card siddhant={forgetPassword} /></div>
+                <div className="col"><Card siddhant={trainDetails3} /></div>
             </div>
             <div className="row">
-                <div className="col"><Card bhushan={trainDetails1} /></div>
-                <div className="col"><Card bhushan={trainDetails2} /></div>
-                <div className="col"><Card bhushan={listOfPassenger} /></div>
+                <div className="col"><Card siddhant={trainDetails1} /></div>
+                <div className="col"><Card siddhant={trainDetails2} /></div>
+                <div className="col"><Card siddhant={listOfPassenger} /></div>
             </div>
             <div className="row">
                 <div className="col"></div>
-                <div className="col"><Card bhushan={listOfTickets} /></div>
+                <div className="col"><Card siddhant={listOfTickets} /></div>
                 <div className="col"></div>
             </div>
 

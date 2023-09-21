@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+//The Footer class is defined as a default export, 
+//meaning it can be imported and used in other parts of your application.
 export default class Footer extends Component {
     constructor(props) {
         super(props)
@@ -12,6 +13,8 @@ export default class Footer extends Component {
         window.localStorage.setItem("category_name", name);
         this.props.history.push('/product-category');
     }
+    // the purpose of the selectcategory method is to store the selected category's ID and name in the browser's 
+    // localStorage and then navigate the user to the '/product-category' route using React Router
 
     render() {
         return (
@@ -20,7 +23,7 @@ export default class Footer extends Component {
                     <div className="col">
                         <table style={{ marginLeft: "16px" }}>
                             <tr>
-                                <td><a to="/aboutus" className="nav-link">
+                                <td><a href="/aboutus" className="nav-link">
                                     <h6 className="nameColor">About Us</h6>
                                 </a>
                                 </td>
@@ -69,7 +72,7 @@ export default class Footer extends Component {
                                 <a><img src="https://www.jiomart.com/images/cms/wysiwyg/app-icons/ios_store.png"
                                     alt="Download GreenMart App for iOs from App Store" /></a>
                             </div>{' '}
-                            <div>© By Indian Railway 2021, CDAC Project, INDIA</div>
+                            <div>© By Indian Railway 2023, CDAC Project, INDIA</div>
                         </div>
                     </div>
                 </div>

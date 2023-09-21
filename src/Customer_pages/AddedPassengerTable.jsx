@@ -1,5 +1,5 @@
 import React from 'react'
-
+//Props is object that holds the data passed by component
 const AddedPassengerTable = (props) => {
     return (
         <div className='container'>
@@ -16,6 +16,7 @@ const AddedPassengerTable = (props) => {
                 </thead>
                 <tbody>
                     <tr>
+                        
                         <td >{props.sam.firstName}</td>
                         <td >{props.sam.lastName}</td>
                         <td >{props.sam.age}</td>
@@ -23,6 +24,8 @@ const AddedPassengerTable = (props) => {
                         <td >{props.sam.seatClassName}</td>
                         <td >{props.sam.innerType}</td>
                     </tr>
+                    {/* In this we're accessing the props 
+                    object to retrive the sam property and sub property */}
                 </tbody>
             </table>
         </div>

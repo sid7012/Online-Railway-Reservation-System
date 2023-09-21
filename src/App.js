@@ -3,7 +3,7 @@ import AddTrain from './adminPages/AddTrain'
 import Signin from './adminPages/Signin'
 import Signup from './adminPages/Signup'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
-import Header from './components/Header'
+import Header from './components/header'
 import Footer from './components/Footer'
 import { ToastContainer } from 'react-toastify';
 import ForgetPassword from './adminPages/forgetPassword'
@@ -35,6 +35,7 @@ function App() {
     const loginStatus = sessionStorage['loginStatus']
     return loginStatus !== '1' ? <Home /> : <AdminFunctinality />
   }
+  //AuthorizeUser checks the loginStatus stored in sessionStorage. If the login status is not equal to '1', it renders the Home component; otherwise, it renders the AdminFunctinality
 
   return (
     <div className='container-fluid'>

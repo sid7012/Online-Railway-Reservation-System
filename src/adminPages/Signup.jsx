@@ -3,12 +3,14 @@ import { Link, Navigate } from 'react-router-dom'
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import { URL } from '../config'
+import { URL } from '../config'//it is for base URL
 import { useNavigate } from 'react-router'
 
 const Signup = () => {
 
     const [email, setEmail] = useState('')
+    //whatever value we are passing in input field it will 
+    //update email value 
     const [password, setPassword] = useState('')
     const [firstName, setFirstName] = useState('')
     const [lastName, setlastName] = useState('')
@@ -37,6 +39,7 @@ const Signup = () => {
         } else if (address.length === 0) {
             toast.warning('Please enter a valid Address')
         } else {
+            //The email, password, firstName, lastName, age, gender, mobile, and address properties are assigned the values of their respective state variables.
             const body = {
                 email,
                 password,
@@ -51,7 +54,9 @@ const Signup = () => {
 
             console.log(body)
 
-
+            // it constructs an object (body) containing the user's information,
+            //  which can then be sent to a backend server for further processing, 
+            //such as storing the user's information in a database or performing additional authentication steps.
             const url = `${URL}/users/`
 
             axios.post(url, body).then((response) => {

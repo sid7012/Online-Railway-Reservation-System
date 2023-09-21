@@ -42,21 +42,21 @@ const UserFunctionality = () => {
       </h1>
       <div className="row">
         <div className="col">
-          <Card bhushan={searchingTrain} />
+          <Card siddhant={searchingTrain} />
         </div>
         <div className="col">
-          <Card bhushan={forgetPassword} />
+          <Card siddhant={forgetPassword} />
         </div>
         <div className="col">
-          <Card bhushan={listOfTrains} />
+          <Card siddhant={listOfTrains} />
         </div>
       </div>
       <div className="row">
         <div className="col">
-          <Card bhushan={listOfPassenger} />
+          <Card siddhant={listOfPassenger} />
         </div>
         <div className="col">
-          <Card bhushan={listOfTickets} />
+          <Card siddhant={listOfTickets} />
         </div>
       </div>
     </div>
